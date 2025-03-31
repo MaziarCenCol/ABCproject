@@ -1,0 +1,74 @@
+﻿@model Web.Models.Project
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input asp-for="Name" class="form-control" placeholder="Project Code" required="True" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Name" class="form-control" placeholder="Title" required="True" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Description" class="form-control" placeholder="Description" required="True" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="StartDate" type="date" class="form-control" placeholder="Start Date" required="True" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="FinishDate" type="date" class="form-control" placeholder="Finish Date" required="True" />
+                <span asp-validation-for="FinishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="RequestDate" type="date" class="form-control" placeholder="Request Date" required="True" />
+                <span asp-validation-for="RequestDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-sm btn-primary" style="width:110px" />
+                &nbsp; &nbsp;
+                <a class="btn btn-sm bg-danger text-light" style="width:110px" asp-action="Delete" asp-route-id="@Model?.Id">Delete Project</a>
+                @{
+                    var s1 = Context.Session.GetInt32("_id");
+                    if (s1 == Model.Id)
+                    {
+                    }
+                }
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <br />
+    @{
+        if (Convert.ToString(Context.Session.GetString("_role")) == "Technician")
+        {
+            <a asp-action="Index" asp-controller="Home">Back to Home Page</a>
+        }
+        else
+        {
+            <a asp-action="Index">Back to List</a>
+        }
+    }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

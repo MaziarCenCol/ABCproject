@@ -1,0 +1,68 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Edit User</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <input asp-for="Name" class="form-control" placeholder="Name" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <input asp-for="Password" type="hidden" />
+            </div>
+            <div class="form-group">
+                <input asp-for="Phone" class="form-control" placeholder="Phone" />
+            </div>            
+            <div class="form-group">
+                <select asp-for="Role" class="form-select" id="DDrole" onchange="GetRole()">
+                    <option value="Technician">@Role.Technician</option>
+                    <option value="Manager">@Role.Manager</option>
+                    <option value="Admin">@Role.Admin</option>
+                </select>
+            </div>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-sm btn-primary" style="width:110px" />
+                &nbsp; &nbsp;
+                <a class="btn btn-sm bg-warning text-light" style="width:120px" asp-action="ResetPassword" asp-route-id="@Model?.Id">  Reset Password  </a>
+                &nbsp; &nbsp;
+                <a class="btn btn-sm bg-danger text-light" style="width:110px" asp-action="Delete" asp-route-id="@Model?.Id">Delete User</a>
+                @{
+                    var s1 = Context.Session.GetInt32("_id");
+                    if (s1 == Model.Id)
+                    {
+                    }
+                }
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <br />
+    @{
+        if (Convert.ToString(Context.Session.GetString("_role")) == "Technician")
+        {
+                    <a asp-action="Index" asp-controller="Home">Back to Home Page</a>
+        }
+        else
+        {
+                    <a asp-action="Index">Back to List</a>
+        }
+    }
+</div>
+
+
+
+
