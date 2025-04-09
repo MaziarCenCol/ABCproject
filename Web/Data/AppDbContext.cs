@@ -13,25 +13,23 @@ namespace Web.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Material> Materials { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Task> Tasks { get; set; }
-        public DbSet<Operation> Operations { get; set; }
-        public DbSet<Machine> Machines { get; set; }
-        public DbSet<MachineWeeklyUpTime> MachineWeeklyUpTimes { get; set; }
-        public DbSet<Job> Jobs { get; set; }
-        public DbSet<TaskMachine> TaskMachines { get; set; }
-        public DbSet<TaskSchedule> TaskSchedules { get; set; }
-        public DbSet<MachineDownSchedule> MachineDownSchedules { get; set; }
+        public DbSet<Material> Materials { get; set; } = null!;
+        public DbSet<Project> Projects { get; set; } = null!;
+        public DbSet<Task> Tasks { get; set; } = null!;
+        public DbSet<Operation> Operations { get; set; } = null!;
+        public DbSet<Machine> Machines { get; set; } = null!;
+        public DbSet<MachineWeeklyUpTime> MachineWeeklyUpTimes { get; set; } = null!;
+        public DbSet<Job> Jobs { get; set; } = null!;
+        public DbSet<TaskMachine> TaskMachines { get; set; } = null!;
+
+        public DbSet<TaskSchedule> TaskSchedules { get; set; } = null!;
+
+        public DbSet<MachineDownSchedule> MachineDownSchedules { get; set; } = null!;
+        public DbSet<MachineOpName> MachineOpNames { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Project>().HasIndex(e => e.Name).IsUnique();
-            modelBuilder.Entity<Job>().HasIndex(e => e.JobNo).IsUnique();
-            modelBuilder.Entity<Machine>().HasIndex(e => e.ResourceCode).IsUnique();
-            modelBuilder.Entity<Operation>().HasIndex(e => e.Name).IsUnique();
-            modelBuilder.Entity<Material>().HasIndex(e => e.MaterialCode).IsUnique();
-
             // Configure composite key for TaskMachine (optional but recommended)
             modelBuilder.Entity<TaskMachine>()
                 .HasKey(tm => new { tm.TaskId, tm.MachineId });
@@ -46,6 +44,18 @@ namespace Web.Data
                 .HasOne(tm => tm.Machine)
                 .WithMany(m => m.TaskMachines)
                 .HasForeignKey(tm => tm.MachineId);
+
+            modelBuilder.Entity<TaskMachine>()
+                .HasOne(tm => tm.OperationCategory)
+                .WithMany()
+                .HasForeignKey(tm => tm.OperationCategoryId)
+                .IsRequired(false);
+
+            // Configure Operation to MachineOpName relationship
+            modelBuilder.Entity<Operation>()
+                .HasOne(o => o.MachineOpName)
+                .WithMany(m => m.Operations)
+                .HasForeignKey(o => o.MachineOpNameId);
 
 
             modelBuilder.Entity<MachineOperationPriority>()
@@ -63,7 +73,6 @@ namespace Web.Data
 
 
             base.OnModelCreating(modelBuilder);
-
         }
 
     }
