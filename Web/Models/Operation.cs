@@ -5,11 +5,14 @@ namespace Web.Models
     public class Operation : Entity
     {   // Id, name, description
 
+        [ForeignKey("MachineOpName")]
+        public int? MachineOpNameId { get; set; }
+        public MachineOpName? MachineOpName { get; set; }
+
         public string? OperationCode { get; set; }
 
         public string? OperationDescription { get; set; }
 
-        public ICollection<Machine> Machines { get; set; } = new List<Machine>();
 
         //public OperationType OperationType { get; set; }
 

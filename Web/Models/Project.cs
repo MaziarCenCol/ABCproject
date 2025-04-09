@@ -4,19 +4,19 @@ namespace Web.Models
 {
     public class Project : Entity
     {
-        public string? ProjectCode { get; set; }
+        public int? ProjectCode { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:D}")]
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:D}")]
-        public DateTime FinishDate { get; set; }
+        public DateTime? FinishDate { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:D}")]
-        public DateTime RequestDate { get; set; }
+        public DateTime? RequestDate { get; set; }
 
         public List<Job>? Jobs { get; set; }
     }

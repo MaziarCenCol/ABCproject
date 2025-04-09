@@ -10,9 +10,9 @@ namespace Web.Models
         public DateTime? FinishDate { get; set; }
         public DateTime? RequestDate { get; set; }
         
-        public double CompletionPercentage { get; set; }
-        public double RequiredProdHours { get; set; }
-        public double ActualProdHours { get; set; }
+        public double? CompletionPercentage { get; set; }
+        public double? RequiredProdHours { get; set; }
+        public double? ActualProdHours { get; set; }
 
         [ForeignKey("Project")]
         public int ProjectId { get; set; }

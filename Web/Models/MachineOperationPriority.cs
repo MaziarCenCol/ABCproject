@@ -4,7 +4,7 @@ namespace Web.Models
 {
 
     //To determine machine priority on operation category
-    public class MachineOperationPriority : Entity
+    public class MachineOperationPriority
     {   // Id, name, description
 
         public int MachineId { get; set; }
