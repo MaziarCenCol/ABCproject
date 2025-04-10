@@ -26,12 +26,6 @@ namespace Web.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Project>().HasIndex(e => e.Name).IsUnique();
-            modelBuilder.Entity<Job>().HasIndex(e => e.JobNo).IsUnique();
-            modelBuilder.Entity<Machine>().HasIndex(e => e.ResourceCode).IsUnique();
-            modelBuilder.Entity<Operation>().HasIndex(e => e.Name).IsUnique();
-            modelBuilder.Entity<Material>().HasIndex(e => e.MaterialCode).IsUnique();
-
             // Configure composite key for TaskMachine (optional but recommended)
             modelBuilder.Entity<TaskMachine>()
                 .HasKey(tm => new { tm.TaskId, tm.MachineId });
@@ -63,7 +57,6 @@ namespace Web.Data
 
 
             base.OnModelCreating(modelBuilder);
-
         }
 
     }

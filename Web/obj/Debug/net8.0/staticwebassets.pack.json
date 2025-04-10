@@ -281,10 +281,6 @@
       "PackagePath": "staticwebassets\\plots\\plot.html"
     },
     {
-      "Id": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\wwwroot\\schedule.json",
-      "PackagePath": "staticwebassets\\schedule.json"
-    },
-    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

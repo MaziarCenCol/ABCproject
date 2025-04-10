@@ -76,17 +76,10 @@ namespace Web.Controllers
                 RunPythonScript();
 
                 return RedirectToAction("DisplaySchedule"); // Redirect to new view
-            }
-
-            return View();
         }
 
-        public IActionResult DisplaySchedule()
-        {
-            ViewBag.PlotPath = "/plots/plot.html"; // Pass plot path to view
             return View();
-        }
-
+    }
 
         // Run Python Script to Generate Plot
         private string RunPythonScript()
@@ -105,6 +98,13 @@ namespace Web.Controllers
                 process.WaitForExit();
                 return process.StandardOutput.ReadToEnd().Trim(); // Read output (HTML file path)
             }
+        }
+
+        // Display Schedule Graph
+        public IActionResult DisplaySchedule()
+        {
+            ViewBag.PlotPath = "/plots/plot.html"; // Pass plot path to view
+            return View();
         }
 
 

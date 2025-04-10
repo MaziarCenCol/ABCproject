@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\displayschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\displayschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\plotly\\showplot.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\plotly\\showplot.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\pythonscripts\\plot.py||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\pythonscripts\\plot.py||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\wwwroot\\schedule.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\wwwroot\\schedule.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,84 +26,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DisplaySchedule.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\DisplaySchedule.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\DisplaySchedule.cshtml",
-              "RelativeToolTip": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-31T00:28:47.385Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "schedule.json",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\wwwroot\\schedule.json",
-              "RelativeDocumentMoniker": "Web\\wwwroot\\schedule.json",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\wwwroot\\schedule.json",
-              "RelativeToolTip": "Web\\wwwroot\\schedule.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-31T00:06:59.667Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "plot.py",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\PythonScripts\\plot.py",
-              "RelativeDocumentMoniker": "Web\\PythonScripts\\plot.py",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\PythonScripts\\plot.py",
-              "RelativeToolTip": "Web\\PythonScripts\\plot.py",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
-              "WhenOpened": "2025-03-31T00:03:18.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Schedule.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Schedule.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
-              "RelativeToolTip": "Web\\Views\\Schedules\\Schedule.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-30T21:41:00.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SchedulesController.cs",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Controllers\\SchedulesController.cs",
-              "RelativeDocumentMoniker": "Web\\Controllers\\SchedulesController.cs",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Controllers\\SchedulesController.cs",
-              "RelativeToolTip": "Web\\Controllers\\SchedulesController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAIwFsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T21:08:28.179Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ShowPlot.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Plotly\\ShowPlot.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Plotly\\ShowPlot.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Plotly\\ShowPlot.cshtml",
-              "RelativeToolTip": "Web\\Views\\Plotly\\ShowPlot.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-30T21:00:53.131Z",
-              "EditorCaption": ""
             }
           ]
         },

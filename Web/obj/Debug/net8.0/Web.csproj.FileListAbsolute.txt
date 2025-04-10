@@ -1,5 +1,6 @@
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\appsettings.Development.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\appsettings.json
+D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\appsettings.Production.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\Web.staticwebassets.runtime.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\Web.exe
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\bin\Debug\net8.0\Web.deps.json
@@ -267,6 +268,7 @@ D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\Web.csp
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\Web.MvcApplicationPartsAssemblyInfo.cache
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\Web.RazorAssemblyInfo.cache
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\Web.RazorAssemblyInfo.cs
+D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\Web.sourcelink.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\staticwebassets.build.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\staticwebassets.development.json
 D:\CANADA\College\CentennialProjects\ABC\ABCproject\Web\obj\Debug\net8.0\staticwebassets\msbuild.Web.Microsoft.AspNetCore.StaticWebAssets.props

@@ -12,7 +12,7 @@ namespace Web.Models
         public int TaskId { get; set; }
         public string? MaterialCode { get; set; }
         public string? Source { get; set; }
-        public double Quantity { get; set; }
+        public double? Quantity { get; set; }
         public DateTime? RequestDate { get; set; }
         public DateTime? FinishDate { get; set; }
         public bool IsReady { get; set; }

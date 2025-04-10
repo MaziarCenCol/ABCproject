@@ -45,10 +45,10 @@ namespace Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("ActualProdHours")
+                    b.Property<double?>("ActualProdHours")
                         .HasColumnType("float");
 
-                    b.Property<double>("CompletionPercentage")
+                    b.Property<double?>("CompletionPercentage")
                         .HasColumnType("float");
 
                     b.Property<string>("Description")
@@ -69,16 +69,13 @@ namespace Web.Migrations
                     b.Property<DateTime?>("RequestDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<double>("RequiredProdHours")
+                    b.Property<double?>("RequiredProdHours")
                         .HasColumnType("float");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("JobNo")
-                        .IsUnique();
 
                     b.HasIndex("ProjectId");
 
@@ -93,7 +90,7 @@ namespace Web.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<double>("CalibratedAccuracyMM")
+                    b.Property<double?>("CalibratedAccuracyMM")
                         .HasColumnType("float");
 
                     b.Property<string>("Controller")
@@ -108,28 +105,25 @@ namespace Web.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MachineCategory")
-                        .HasColumnType("int");
+                    b.Property<string>("MachineCategory")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MachineManufacturer")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MachineScale")
-                        .HasColumnType("int");
-
                     b.Property<string>("MachineType")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MaxAvailableHoursPerDay")
+                    b.Property<int?>("MaxAvailableHoursPerDay")
                         .HasColumnType("int");
 
-                    b.Property<double>("MaxFeedMMmin")
+                    b.Property<double?>("MaxFeedMMmin")
                         .HasColumnType("float");
 
-                    b.Property<double>("MaxOpen")
+                    b.Property<double?>("MaxOpen")
                         .HasColumnType("float");
 
-                    b.Property<double>("MaxOpenInches")
+                    b.Property<double?>("MaxOpenInches")
                         .HasColumnType("float");
 
                     b.Property<string>("Model")
@@ -138,74 +132,67 @@ namespace Web.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("OperationCostHourly")
+                    b.Property<double?>("OperationCostHourly")
                         .HasColumnType("float");
 
                     b.Property<string>("Orientation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PlateLength")
+                    b.Property<double?>("PlateLength")
                         .HasColumnType("float");
 
-                    b.Property<double>("PlateLengthInches")
+                    b.Property<double?>("PlateLengthInches")
                         .HasColumnType("float");
 
-                    b.Property<double>("PlateWidth")
+                    b.Property<double?>("PlateWidth")
                         .HasColumnType("float");
 
-                    b.Property<double>("PlateWidthInches")
+                    b.Property<double?>("PlateWidthInches")
                         .HasColumnType("float");
 
-                    b.Property<double>("RapidMMmin")
+                    b.Property<double?>("RapidMMmin")
                         .HasColumnType("float");
 
                     b.Property<string>("ResourceCode")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Rpm")
+                    b.Property<double?>("Rpm")
                         .HasColumnType("float");
 
-                    b.Property<double>("TableCapacity")
+                    b.Property<double?>("TableCapacity")
                         .HasColumnType("float");
 
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToolChangerCapacity")
+                    b.Property<int?>("ToolChangerCapacity")
                         .HasColumnType("int");
 
                     b.Property<string>("ToolHolder")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Wtravel")
+                    b.Property<double?>("Wtravel")
                         .HasColumnType("float");
 
-                    b.Property<double>("Xtravel")
+                    b.Property<double?>("Xtravel")
                         .HasColumnType("float");
 
-                    b.Property<double>("XtravelInches")
+                    b.Property<double?>("XtravelInches")
                         .HasColumnType("float");
 
-                    b.Property<int>("Year")
+                    b.Property<int?>("Year")
                         .HasColumnType("int");
 
-                    b.Property<double>("Ytravel")
+                    b.Property<double?>("Ytravel")
                         .HasColumnType("float");
 
-                    b.Property<double>("YtravelInches")
+                    b.Property<double?>("YtravelInches")
                         .HasColumnType("float");
 
-                    b.Property<double>("ZtravelDaylight")
+                    b.Property<double?>("ZtravelDaylight")
                         .HasColumnType("float");
 
-                    b.Property<double>("ZtravelDaylightInches")
+                    b.Property<double?>("ZtravelDaylightInches")
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ResourceCode")
-                        .IsUnique()
-                        .HasFilter("[ResourceCode] IS NOT NULL");
 
                     b.ToTable("Machines");
                 });
@@ -255,15 +242,6 @@ namespace Web.Migrations
 
                     b.Property<int>("OperationCategoryId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Priority")
                         .HasColumnType("int");
@@ -326,12 +304,12 @@ namespace Web.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("MaterialCode")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Quantity")
+                    b.Property<double?>("Quantity")
                         .HasColumnType("float");
 
                     b.Property<DateTime?>("RequestDate")
@@ -344,10 +322,6 @@ namespace Web.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MaterialCode")
-                        .IsUnique()
-                        .HasFilter("[MaterialCode] IS NOT NULL");
 
                     b.HasIndex("TaskId");
 
@@ -366,7 +340,7 @@ namespace Web.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("OperationCode")
                         .HasColumnType("nvarchar(max)");
@@ -375,10 +349,6 @@ namespace Web.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Operations");
                 });
@@ -413,26 +383,22 @@ namespace Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("FinishDate")
+                    b.Property<DateTime?>("FinishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ProjectCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("RequestDate")
+                    b.Property<int?>("ProjectCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("RequestDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Projects");
                 });
@@ -482,7 +448,7 @@ namespace Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("FinishDate")
+                    b.Property<DateTime>("FinishDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("JobId")
@@ -497,19 +463,16 @@ namespace Web.Migrations
                     b.Property<int>("OperationId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("RequestDate")
+                    b.Property<DateTime>("RequestDate")
                         .HasColumnType("datetime2");
 
                     b.Property<double>("RequiredProdHours")
                         .HasColumnType("float");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TaskSeq")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TaskStatus")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
