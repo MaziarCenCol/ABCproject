@@ -13,5 +13,13 @@ namespace Web.Models
 
         // Additional property representing priority
         public int Priority { get; set; }
+
+        //store OperationCategory ID matched with the task
+        [ForeignKey("OperationCategory")]
+        public int? OperationCategoryId { get; set; }
+
+        // Navigation property to OperationCategory
+        public OperationCategory? OperationCategory { get; set; }
     }
 }
+

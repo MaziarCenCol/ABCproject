@@ -9,7 +9,7 @@ namespace Web.Models
         // Navigation property for the association with Task through TaskMachine
         public ICollection<TaskMachine> TaskMachines { get; set; } = new List<TaskMachine>();
 
-        public ICollection<Operation> Operations { get; set; } = new List<Operation>();
+        public ICollection<MachineOpName> MachineOpNames { get; set; } = new List<MachineOpName>();
 
         public ICollection<MachineOperationPriority> MachineOperationPrioritys { get; set; } = new List<MachineOperationPriority>();
 
@@ -49,4 +49,5 @@ namespace Web.Models
 
     }
 }
+
 

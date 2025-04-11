@@ -21,3 +21,4 @@ namespace Web.Models
         public List<Job>? Jobs { get; set; }
     }
 }
+

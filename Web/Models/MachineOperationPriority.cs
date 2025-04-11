@@ -18,6 +18,3 @@ namespace Web.Models
 
     }
 }
-
-
-

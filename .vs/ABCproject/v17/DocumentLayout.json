@@ -1,7 +1,84 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\configureation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\configureation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\reschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\reschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\schedules\\displayschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\displayschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\taskschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\taskschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\taskmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\taskmachine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\scheduleversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\scheduleversion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\project.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\operationcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\operationcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\operation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\operation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\material.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\machineweeklyuptime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\machineweeklyuptime.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\machineopname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\machineopname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\machineoperationpriority.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\machineoperationpriority.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\machinedownschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\machinedownschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\machine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\machine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +86,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,6 +103,253 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Schedule.cshtml",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Schedule.cshtml",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\Schedule.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T00:45:15.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Reschedule.cshtml",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Reschedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Reschedule.cshtml",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Reschedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\Reschedule.cshtml",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T00:45:05.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DisplaySchedule.cshtml",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\DisplaySchedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\DisplaySchedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T00:45:00.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Configureation.cshtml",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Configureation.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Configureation.cshtml",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Schedules\\Configureation.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\Configureation.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-11T00:44:49.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\User.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\User.cs",
+              "RelativeToolTip": "Web\\Models\\User.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAgwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:44:16.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskSchedule.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\TaskSchedule.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\TaskSchedule.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\TaskSchedule.cs",
+              "RelativeToolTip": "Web\\Models\\TaskSchedule.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:44:12.39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaskMachine.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\TaskMachine.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\TaskMachine.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\TaskMachine.cs",
+              "RelativeToolTip": "Web\\Models\\TaskMachine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:44:07.703Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Task.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Task.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Task.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Task.cs",
+              "RelativeToolTip": "Web\\Models\\Task.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAA/wCIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:44:02.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ScheduleVersion.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\ScheduleVersion.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\ScheduleVersion.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\ScheduleVersion.cs",
+              "RelativeToolTip": "Web\\Models\\ScheduleVersion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:59.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Project.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Project.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Project.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Project.cs",
+              "RelativeToolTip": "Web\\Models\\Project.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:55.721Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OperationCategory.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\OperationCategory.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\OperationCategory.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\OperationCategory.cs",
+              "RelativeToolTip": "Web\\Models\\OperationCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:49.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Operation.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Operation.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Operation.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Operation.cs",
+              "RelativeToolTip": "Web\\Models\\Operation.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA5wBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:41.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Material.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Material.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Material.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Material.cs",
+              "RelativeToolTip": "Web\\Models\\Material.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:37.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MachineWeeklyUpTime.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineWeeklyUpTime.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\MachineWeeklyUpTime.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineWeeklyUpTime.cs",
+              "RelativeToolTip": "Web\\Models\\MachineWeeklyUpTime.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAswB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:29.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MachineOpName.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineOpName.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\MachineOpName.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineOpName.cs",
+              "RelativeToolTip": "Web\\Models\\MachineOpName.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:25.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MachineOperationPriority.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineOperationPriority.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\MachineOperationPriority.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineOperationPriority.cs",
+              "RelativeToolTip": "Web\\Models\\MachineOperationPriority.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:18.975Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Machine.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Machine.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Machine.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Machine.cs",
+              "RelativeToolTip": "Web\\Models\\Machine.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:09.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Job.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Job.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\Job.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\Job.cs",
+              "RelativeToolTip": "Web\\Models\\Job.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:43:05.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MachineDownSchedule.cs",
+              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineDownSchedule.cs",
+              "RelativeDocumentMoniker": "Web\\Models\\MachineDownSchedule.cs",
+              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Models\\MachineDownSchedule.cs",
+              "RelativeToolTip": "Web\\Models\\MachineDownSchedule.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T00:42:58.419Z",
+              "EditorCaption": ""
             }
           ]
         },

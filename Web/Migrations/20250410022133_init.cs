@@ -6,11 +6,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Web.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "MachineOpNames",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OpName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MachineOpNames", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Machines",
                 columns: table => new
@@ -72,22 +87,6 @@ namespace Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Operations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    OperationCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OperationDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Operations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
                 {
@@ -140,6 +139,52 @@ namespace Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Operations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MachineOpNameId = table.Column<int>(type: "int", nullable: true),
+                    OperationCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OperationDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Operations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Operations_MachineOpNames_MachineOpNameId",
+                        column: x => x.MachineOpNameId,
+                        principalTable: "MachineOpNames",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MachineMachineOpName",
+                columns: table => new
+                {
+                    MachineOpNamesId = table.Column<int>(type: "int", nullable: false),
+                    MachinesId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MachineMachineOpName", x => new { x.MachineOpNamesId, x.MachinesId });
+                    table.ForeignKey(
+                        name: "FK_MachineMachineOpName_MachineOpNames_MachineOpNamesId",
+                        column: x => x.MachineOpNamesId,
+                        principalTable: "MachineOpNames",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_MachineMachineOpName_Machines_MachinesId",
+                        column: x => x.MachinesId,
+                        principalTable: "Machines",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MachineWeeklyUpTimes",
                 columns: table => new
                 {
@@ -184,30 +229,6 @@ namespace Web.Migrations
                         name: "FK_MachineOperationPriority_OperationCategory_OperationCategoryId",
                         column: x => x.OperationCategoryId,
                         principalTable: "OperationCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MachineOperation",
-                columns: table => new
-                {
-                    MachinesId = table.Column<int>(type: "int", nullable: false),
-                    OperationsId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MachineOperation", x => new { x.MachinesId, x.OperationsId });
-                    table.ForeignKey(
-                        name: "FK_MachineOperation_Machines_MachinesId",
-                        column: x => x.MachinesId,
-                        principalTable: "Machines",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MachineOperation_Operations_OperationsId",
-                        column: x => x.OperationsId,
-                        principalTable: "Operations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -340,7 +361,8 @@ namespace Web.Migrations
                 {
                     TaskId = table.Column<int>(type: "int", nullable: false),
                     MachineId = table.Column<int>(type: "int", nullable: false),
-                    Priority = table.Column<int>(type: "int", nullable: false)
+                    Priority = table.Column<int>(type: "int", nullable: false),
+                    OperationCategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -351,6 +373,11 @@ namespace Web.Migrations
                         principalTable: "Machines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TaskMachines_OperationCategory_OperationCategoryId",
+                        column: x => x.OperationCategoryId,
+                        principalTable: "OperationCategory",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_TaskMachines_Tasks_TaskId",
                         column: x => x.TaskId,
@@ -415,9 +442,9 @@ namespace Web.Migrations
                 column: "VersionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineOperation_OperationsId",
-                table: "MachineOperation",
-                column: "OperationsId");
+                name: "IX_MachineMachineOpName_MachinesId",
+                table: "MachineMachineOpName",
+                column: "MachinesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MachineOperationPriority_OperationCategoryId",
@@ -435,9 +462,19 @@ namespace Web.Migrations
                 column: "TaskId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Operations_MachineOpNameId",
+                table: "Operations",
+                column: "MachineOpNameId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_TaskMachines_MachineId",
                 table: "TaskMachines",
                 column: "MachineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TaskMachines_OperationCategoryId",
+                table: "TaskMachines",
+                column: "OperationCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_JobId",
@@ -472,7 +509,7 @@ namespace Web.Migrations
                 name: "MachineDownSchedules");
 
             migrationBuilder.DropTable(
-                name: "MachineOperation");
+                name: "MachineMachineOpName");
 
             migrationBuilder.DropTable(
                 name: "MachineOperationPriority");
@@ -512,6 +549,9 @@ namespace Web.Migrations
 
             migrationBuilder.DropTable(
                 name: "Projects");
+
+            migrationBuilder.DropTable(
+                name: "MachineOpNames");
         }
     }
 }

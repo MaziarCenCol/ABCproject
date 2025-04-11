@@ -22,19 +22,19 @@ namespace Web.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MachineOperation", b =>
+            modelBuilder.Entity("MachineMachineOpName", b =>
                 {
+                    b.Property<int>("MachineOpNamesId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MachinesId")
                         .HasColumnType("int");
 
-                    b.Property<int>("OperationsId")
-                        .HasColumnType("int");
+                    b.HasKey("MachineOpNamesId", "MachinesId");
 
-                    b.HasKey("MachinesId", "OperationsId");
+                    b.HasIndex("MachinesId");
 
-                    b.HasIndex("OperationsId");
-
-                    b.ToTable("MachineOperation");
+                    b.ToTable("MachineMachineOpName");
                 });
 
             modelBuilder.Entity("Web.Models.Job", b =>
@@ -235,6 +235,28 @@ namespace Web.Migrations
                     b.ToTable("MachineDownSchedules");
                 });
 
+            modelBuilder.Entity("Web.Models.MachineOpName", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OpName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MachineOpNames");
+                });
+
             modelBuilder.Entity("Web.Models.MachineOperationPriority", b =>
                 {
                     b.Property<int>("MachineId")
@@ -339,6 +361,9 @@ namespace Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("MachineOpNameId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -349,6 +374,8 @@ namespace Web.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MachineOpNameId");
 
                     b.ToTable("Operations");
                 });
@@ -492,12 +519,17 @@ namespace Web.Migrations
                     b.Property<int>("MachineId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OperationCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Priority")
                         .HasColumnType("int");
 
                     b.HasKey("TaskId", "MachineId");
 
                     b.HasIndex("MachineId");
+
+                    b.HasIndex("OperationCategoryId");
 
                     b.ToTable("TaskMachines");
                 });
@@ -583,17 +615,17 @@ namespace Web.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MachineOperation", b =>
+            modelBuilder.Entity("MachineMachineOpName", b =>
                 {
-                    b.HasOne("Web.Models.Machine", null)
+                    b.HasOne("Web.Models.MachineOpName", null)
                         .WithMany()
-                        .HasForeignKey("MachinesId")
+                        .HasForeignKey("MachineOpNamesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Web.Models.Operation", null)
+                    b.HasOne("Web.Models.Machine", null)
                         .WithMany()
-                        .HasForeignKey("OperationsId")
+                        .HasForeignKey("MachinesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -665,6 +697,15 @@ namespace Web.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Web.Models.Operation", b =>
+                {
+                    b.HasOne("Web.Models.MachineOpName", "MachineOpName")
+                        .WithMany("Operations")
+                        .HasForeignKey("MachineOpNameId");
+
+                    b.Navigation("MachineOpName");
+                });
+
             modelBuilder.Entity("Web.Models.Task", b =>
                 {
                     b.HasOne("Web.Models.Job", null)
@@ -690,6 +731,10 @@ namespace Web.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Web.Models.OperationCategory", "OperationCategory")
+                        .WithMany()
+                        .HasForeignKey("OperationCategoryId");
+
                     b.HasOne("Web.Models.Task", "Task")
                         .WithMany("TaskMachines")
                         .HasForeignKey("TaskId")
@@ -697,6 +742,8 @@ namespace Web.Migrations
                         .IsRequired();
 
                     b.Navigation("Machine");
+
+                    b.Navigation("OperationCategory");
 
                     b.Navigation("Task");
                 });
@@ -738,6 +785,11 @@ namespace Web.Migrations
                     b.Navigation("MachineOperationPrioritys");
 
                     b.Navigation("TaskMachines");
+                });
+
+            modelBuilder.Entity("Web.Models.MachineOpName", b =>
+                {
+                    b.Navigation("Operations");
                 });
 
             modelBuilder.Entity("Web.Models.OperationCategory", b =>

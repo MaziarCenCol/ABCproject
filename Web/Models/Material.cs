@@ -18,3 +18,4 @@ namespace Web.Models
         public bool IsReady { get; set; }
     }
 }
+
