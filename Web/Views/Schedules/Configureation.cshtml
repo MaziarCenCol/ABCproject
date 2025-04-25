@@ -48,6 +48,10 @@
             return;
         }
 
+        // Show the loading message
+        statusDiv.style.display = "block";
+        statusDiv.textContent = "⏳ Uploading... Please wait.";
+
         try {
             const response = await fetch('http://127.0.0.1:8000/api/upload_resource_parameter_xlsx', {
                 method: 'POST',
@@ -70,6 +74,9 @@
         } catch (error) {
             console.error('Fetch error:', error);
             alert("Upload failed. Network or CORS issue?");
+        } finally {
+            // Hide the loading message
+            statusDiv.style.display = "none";
         }
     }
 </script>
