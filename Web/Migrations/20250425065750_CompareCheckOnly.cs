@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Web.Migrations
 {
     /// <inheritdoc />
-    public partial class mig0 : Migration
+    public partial class CompareCheckOnly : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -111,8 +111,13 @@ namespace Web.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    TaskStartDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Modification = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Version = table.Column<int>(type: "int", nullable: false),
+                    ObjectiveValue = table.Column<float>(type: "real", nullable: true),
+                    LowerBound = table.Column<float>(type: "real", nullable: true),
+                    SolverStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Runtime = table.Column<float>(type: "real", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -271,7 +276,7 @@ namespace Web.Migrations
                     VersionId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FinishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DownType = table.Column<int>(type: "int", nullable: true),
+                    DownType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -399,7 +404,6 @@ namespace Web.Migrations
                     SubTask_Number = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FinishDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    ScheduleGenerationDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

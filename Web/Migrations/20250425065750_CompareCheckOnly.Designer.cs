@@ -12,8 +12,8 @@ using Web.Data;
 namespace Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250425030238_mig0")]
-    partial class mig0
+    [Migration("20250425065750_CompareCheckOnly")]
+    partial class CompareCheckOnly
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -211,8 +211,8 @@ namespace Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DownType")
-                        .HasColumnType("int");
+                    b.Property<string>("DownType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FinishDate")
                         .HasColumnType("datetime2");
@@ -447,11 +447,26 @@ namespace Web.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float?>("LowerBound")
+                        .HasColumnType("real");
+
                     b.Property<string>("Modification")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float?>("ObjectiveValue")
+                        .HasColumnType("real");
+
+                    b.Property<float?>("Runtime")
+                        .HasColumnType("real");
+
+                    b.Property<string>("SolverStatus")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("TaskStartDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
@@ -556,9 +571,6 @@ namespace Web.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ScheduleGenerationDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
