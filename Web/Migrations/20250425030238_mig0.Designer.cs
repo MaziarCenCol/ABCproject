@@ -12,8 +12,8 @@ using Web.Data;
 namespace Web.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250410022133_init")]
-    partial class init
+    [Migration("20250425030238_mig0")]
+    partial class mig0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

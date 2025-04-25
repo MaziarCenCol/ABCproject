@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mazia\\source\\repos\\ABCproject\\Web\\Web.csproj": {}
+    "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mazia\\source\\repos\\ABCproject\\Web\\Web.csproj": {
+    "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mazia\\source\\repos\\ABCproject\\Web\\Web.csproj",
+        "projectUniqueName": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\mazia\\source\\repos\\ABCproject\\Web\\Web.csproj",
+        "projectPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Web.csproj",
         "packagesPath": "C:\\Users\\mazia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mazia\\source\\repos\\ABCproject\\Web\\obj\\",
+        "outputPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

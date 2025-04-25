@@ -5,95 +5,68 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Tasks</h1>
 
-<p>
+@* <p>
     <a asp-action="Create">Create New</a>
 </p>
-
+ *@
 <div class="table-responsive">
     <table class="table table-bordered table-striped table-hover">
         <thead class="bg-warning text-light">
             <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TaskSeq)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FinishDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequestDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CompletionPercentage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RequiredProdHours)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ActualProdHours)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OperationComment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Operation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaskSeq)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinishDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequestDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompletionPercentage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RequiredProdHours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActualProdHours)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OperationComment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Operation.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                <th scope="col" style="width:5%">
+                    Seq
+                </th>
+                <th scope="col" style="width:20%">
+                    Start
+                </th>
+                <th scope="col" style="width:20%">
+                    Finish
+                </th>
+                <th scope="col" style="width:15%">
+                    Operation
+                </th>
+                <th scope="col" style="width:15%">
+                    Title
+                </th>
+                <th scope="col" style="width:20%">
+                    Comment
+                </th>
+                <th scope="col" style="width:5%">
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaskSeq)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FinishDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Operation.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="width: 15%">
+                        @Html.DisplayFor(modelItem => item.OperationComment)
+                    </td>
+                    <td>
+                        @* <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> | *@
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> *@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>

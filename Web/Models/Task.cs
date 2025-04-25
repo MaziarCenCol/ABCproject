@@ -32,3 +32,4 @@ namespace Web.Models
         public ICollection<Material> Materials { get; set; } = new List<Material>();
     }
 }
+

@@ -22,4 +22,3 @@ namespace Web.Models
         public OperationCategory? OperationCategory { get; set; }
     }
 }
-
