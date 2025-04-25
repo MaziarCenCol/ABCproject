@@ -1,0 +1,116 @@
+﻿@{
+    ViewData["Title"] = "Upload Files";
+}
+
+<div class="container d-flex justify-content-center align-items-start min-vh-100 pt-5">
+    <div class="card p-5 shadow-lg w-40">
+        <h4 class="text-center mb-4">Create Project Schedule</h4>
+        <br>
+
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <div class="alert alert-info text-center">
+                @ViewBag.Message
+            </div>
+        }
+
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="mb-5">
+                @{
+                    List<SelectListItem> projectList = new List<SelectListItem>
+                    {
+                        new SelectListItem { Text = "7682", Value = "7682" },
+                        new SelectListItem { Text = "7684", Value = "7684" },
+                        new SelectListItem { Text = "7686", Value = "7686" },
+                        new SelectListItem { Text = "7783", Value = "7783" },
+                        new SelectListItem { Text = "7867", Value = "7867" },
+                        new SelectListItem { Text = "7888", Value = "7888" },
+                        new SelectListItem { Text = "7889", Value = "7889" },
+                        new SelectListItem { Text = "7916", Value = "7916" },
+                        new SelectListItem { Text = "7920", Value = "7920" },
+                        new SelectListItem { Text = "7940", Value = "7940" },
+                    };
+                }
+                <!-- Dropdown for projects -->
+                <label for="projectSelect">Select Project:</label>
+                <select id="projectSelect" class="form-control">
+                    @foreach (var item in projectList)
+                    {
+                        <option value="@item.Value">@item.Text</option>
+                    }
+                </select>
+ 
+                <br />
+
+                <!-- Date picker -->
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" class="form-control" />
+
+                <br />
+
+                <!-- Submit button -->
+                <button type="button" onclick="createSchedule()" class="btn btn-primary mt-2">Create Schedule</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script>
+function createSchedule(event) {
+    if (event) event.preventDefault();
+
+    const startDate = document.getElementById('startDate').value;
+    const projectValue = parseInt(document.getElementById('projectSelect').value);
+
+    const requestData = {
+        start_date: startDate,
+        projects: [projectValue]
+    };
+
+    alert("Start Date: " + requestData.start_date + "\nProjects: " + requestData.projects);
+
+    fetch('http://127.0.0.1:8000/api/create_schedule', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(async (response) => {
+        const text = await response.text();
+
+        if (!response.ok) {
+            alert("🚫 Server error:\n" + text);
+            return;
+        }
+
+        try {
+            const data = JSON.parse(text);
+            console.log("✅ API Response:", data);
+            alert("Schedule created successfully!");
+
+            // Download the JSON file
+            downloadJSON(data);
+        } catch (err) {
+            console.error("⚠️ Could not parse JSON:", text);
+            alert("API responded, but JSON was invalid:\n" + text);
+        }
+    })
+    .catch(error => {
+        console.error("❌ Network or server error:", error);
+        alert("API request failed.");
+    });
+}
+
+function downloadJSON(data, filename = "schedule.json") {
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+</script>
+

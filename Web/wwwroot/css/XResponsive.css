@@ -1,0 +1,134 @@
+﻿        /*  SECTIONS  */
+        .section {
+            clear: both;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        /*  COLUMN SETUP  */
+        .col {
+            display: block;
+            float: left;
+            margin: .3%;
+        }
+
+            .col:first-child {
+                margin-left: 0;
+            }
+
+
+        /*  GROUPING  */
+        .group:before,
+        .group:after {
+            content: "";
+            display: table;
+        }
+
+        .group:after {
+            clear: both;
+        }
+
+        .group {
+            zoom: 1; /* For IE 6/7 */
+        }
+
+        /*  GRID OF THREE  */
+        .resp_5 {
+            width: 4%;
+            padding: 0px;
+        }
+        .resp_10 {
+            width: 9%;
+            padding: 0px;
+        }
+        .resp_13 {
+            width: 12.7%;
+            padding: 0px;
+        }
+        .resp_15 {
+            width: 14%;
+            padding: 0px;
+        }
+        .resp_16 {
+            width: 15.7%;
+            padding: 0px;
+        }
+        .resp_20 {
+            width: 19%;
+            padding: 0px;
+        }
+        .resp_25 {
+            width: 24%;
+            padding: 0;
+        }
+        .resp_30 {
+            width: 29%;
+            padding: 0px;
+        }
+        .resp_33 {
+            width: 32%;
+            padding: 0px;
+        }
+        .resp_40 {
+            width: 39%;
+            padding: 0px;
+        }
+        .resp_50 {
+            width: 49%;
+            padding: 0px;
+        }
+        .resp_55 {
+            width: 54%;
+            padding: 0px;
+        }
+        .resp_60 {
+            width: 59%;
+            padding: 0px;
+        }
+        .resp_66 {
+            width: 65%;
+            padding: 0px;
+        }
+        .resp_70 {
+            width: 69%;
+            padding: 0px;
+        }
+        .resp_75 {
+            width: 74%;
+            padding: 0px;
+        }
+        .resp_80 {
+            width: 79%;
+            padding: 0px;
+        }
+        .resp_85 {
+            width: 84%;
+            padding: 0px;
+        }
+        .resp_90 {
+            width: 89%;
+            padding: 0px;
+        }
+
+        .resp_12 {
+            width: 11.8%;
+            padding: 0px;
+        }
+        /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+        @media only screen and (max-width: 680px) {
+            .col {
+                margin: 1%;
+                padding: 1%;
+            }
+
+            .resp_5, .resp_10, .resp_13, .resp_15, .resp_16, .resp_20, .resp_25, .resp_30, .resp_33, .resp_40, .resp_50, .resp_55, .resp_60, .resp_66, .resp_70, .resp_75, .resp_80, .resp_85, .resp_90 {
+                width: 100%;
+            }
+            .resp_12 {
+                width: 30%;
+            }
+            .bbox {
+                border: 2px solid blue;
+            }
+
+        }    
