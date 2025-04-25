@@ -17,14 +17,14 @@ namespace Web.Models
         public DateTime? StartDate { get; set; }
         public DateTime? FinishDate { get; set; }
 
-        public DownType? DownType { get; set; }
+        public String? DownType { get; set; }
 
     }
 
-    public enum DownType
-    {
-        Scheduled_Down,
-        Unscheduled_Down,
-    }
+    // public enum DownType
+    // {
+    //     Scheduled_Down,
+    //     Unscheduled_Down,
+    // }
 
 }
