@@ -27,6 +27,8 @@ namespace Web.Data
         public DbSet<MachineDownSchedule> MachineDownSchedules { get; set; } = null!;
         public DbSet<MachineOpName> MachineOpNames { get; set; } = null!;
 
+        public DbSet<MachineUnscheduledDownTime> MachineUnscheduledDownTimes { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
