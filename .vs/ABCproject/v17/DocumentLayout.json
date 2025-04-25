@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\",
+  "WorkspaceRootPath": "C:\\CentennialCode\\ABCproject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Migrations\\20250425030238_mig0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Web\\Migrations\\20250425030238_mig0.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,61 +13,33 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 199,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250425030238_mig0.cs",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Migrations\\20250425030238_mig0.cs",
-              "RelativeDocumentMoniker": "Web\\Migrations\\20250425030238_mig0.cs",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Migrations\\20250425030238_mig0.cs",
-              "RelativeToolTip": "Web\\Migrations\\20250425030238_mig0.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-25T03:02:39.078Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 176,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 176,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CreateSchedule.cshtml",
+              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAmwHEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-25T16:26:37.947Z",
+              "EditorCaption": ""
             }
           ]
         }

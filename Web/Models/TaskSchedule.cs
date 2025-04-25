@@ -25,7 +25,5 @@ namespace Web.Models
         public DateTime? StartDate { get; set; }
         public DateTime? FinishDate { get; set; }
 
-        public DateTime? ScheduleGenerationDate { get; set;}
-                
     }
 }
