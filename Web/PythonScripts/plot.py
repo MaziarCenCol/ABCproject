@@ -23,7 +23,7 @@ def generate_plot():
                       x_start="Start", 
                       x_end="Finish", 
                       y="Machine", 
-                      color="Task", 
+                      color="Job", 
                       title="Machine Schedule",
                       labels={"Machine": "Machines", "Task": "Tasks"},
                       hover_data=["Duration", "Job", "Require By"])
