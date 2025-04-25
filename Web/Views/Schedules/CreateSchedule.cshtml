@@ -32,8 +32,14 @@
                     };
                 }
                 <!-- Dropdown for projects -->
-                <label for="projectSelect">Select Project:</label>
-                <select id="projectSelect" class="form-control">
+                <label for="projectSelect">Select Projects:</label>
+                <select id="projectSelect"
+                        name="projects"
+                        class="form-control"
+                        multiple
+                        size="10">
+                    <!-- optional: show 10 rows at once -->
+                        
                     @foreach (var item in projectList)
                     {
                         <option value="@item.Value">@item.Text</option>
@@ -62,11 +68,15 @@ function createSchedule(event) {
     if (event) event.preventDefault();
 
     const startDate = document.getElementById('startDate').value;
-    const projectValue = parseInt(document.getElementById('projectSelect').value);
+    // const projectValue = parseInt(document.getElementById('projectSelect').value);
+    const projectSelect = document.getElementById('projectSelect');
+    const selectedProjects = Array.from(projectSelect.selectedOptions)
+                                      .map(opt => parseInt(opt.value, 10));
 
     const requestData = {
         start_date: startDate,
-        projects: [projectValue]
+        // projects: [projectValue]
+            projects: selectedProjects
     };
 
     alert("Start Date: " + requestData.start_date + "\nProjects: " + requestData.projects);
