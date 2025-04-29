@@ -1,25 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Web.Data;
-using Web.Models;
-using Newtonsoft.Json;
-using System.IO;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace Web.Controllers
 {
-    public class SchedulesController : Controller
+	public class SchedulesController : Controller
     {
         private readonly ILogger<HomeController> _logger;
         private readonly AppDbContext _context;
         private readonly string _jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "schedule.json");
+		private readonly IWebHostEnvironment _env;
 
-
-        public SchedulesController(ILogger<HomeController> logger, AppDbContext context)
+		public SchedulesController(ILogger<HomeController> logger, AppDbContext context, IWebHostEnvironment env)
         {
             _logger = logger;
             _context = context;
-        }
+			_env = env;
+		}
 
         // ------------ Configuration ------------
         public IActionResult Configureation()
@@ -46,9 +44,8 @@ namespace Web.Controllers
             return View();
         }
 
-
-        // ------------ Configuration ------------
-        public IActionResult Status()
+		// ------------ Configuration ------------
+		public IActionResult Status()
         {
             return View();
         }
@@ -78,29 +75,35 @@ namespace Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult CreateSchedule(List<IFormFile> files)
-        {
-            if (files != null && files.Count > 0)
-            {
-                foreach (var file in files)
-                {
-                    // Save or process the uploaded files here
-                }
-                ViewBag.Message = "Files uploaded successfully!";
-            }
-            else
-            {
-                ViewBag.Message = "Please select files to upload.";
-            }
+		// API to save JSON data
+		[HttpPost("/api/file/save_schedule_json")]
+		public async Task<IActionResult> SaveScheduleJson([FromBody] object jsonData)
+		{
+			try
+			{
+				var filesPath = Path.Combine(_env.WebRootPath, "files");
 
-            return View();
-        }
+				if (!Directory.Exists(filesPath))
+				{
+					Directory.CreateDirectory(filesPath);
+				}
+
+				var filePath = Path.Combine(filesPath, "schedule.json");
+
+				// Serialize and save
+				await System.IO.File.WriteAllTextAsync(filePath, JsonSerializer.Serialize(jsonData, new JsonSerializerOptions { WriteIndented = true }));
+
+				return Ok(new { message = "File saved successfully.", path = filePath });
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, new { message = "Saving failed.", error = ex.Message });
+			}
+		}
 
 
-
-        // ------------ Scheduling ------------
-        public IActionResult Schedule()
+		// ------------ Scheduling ------------
+		public IActionResult Schedule()
         {
             return View();
         }
