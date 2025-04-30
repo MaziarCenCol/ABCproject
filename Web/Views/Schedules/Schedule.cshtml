@@ -4,7 +4,7 @@
 
 <div class="container d-flex justify-content-center align-items-start min-vh-100 pt-5">
     <div class="card p-4 shadow-lg w-50">
-        <h4 class="text-center mb-4">Upload Json file to Generate Schedule</h4>
+        <h4 class="text-center mb-4">Generate Schedule</h4>
         <br>
         @if (!string.IsNullOrEmpty(ViewBag.Message))
         {
@@ -12,17 +12,18 @@
                 @ViewBag.Message
             </div>
         }
-        <form asp-action="Schedule" asp-controller="Schedules" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <input type="file" class="form-control" id="file" name="file">
+        <form asp-action="Schedule" asp-controller="Schedules" method="post">
+            <div style="text-align: center; color: #524E50; background-color: #F5F5F5; font-size: 12px; padding-top: 10px">
+                <label class="h5">View the schedule from the latest created file (schedule.json)</label>
             </div>
+            <br />
             <div class="mb-3 d-flex align-items-center">
                 <input type="checkbox" class="form-check-input me-2" id="confirm" name="Confirm" value="true" required>
                 <label class="form-check-label fw-bold" for="confirm">I confirm the scheduling</label>
             </div>
             <br>
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Upload</button>
+                <button type="submit" class="btn btn-primary">View</button>
             </div>
         </form>
     </div>
