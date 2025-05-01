@@ -1,10 +1,11 @@
-﻿@{
+﻿@model MachineJobTask
+@{
     ViewData["Title"] = "Reschedule Request";
 }
 
-<div class="container d-flex justify-content-center align-items-start min-vh-100 pt-5">
+<div class="container d-flex justify-content-center align-items-start min-vh-100 pt-2">
     <div class="card p-4 shadow-lg custom-box">
-        <h4 class="text-center mb-4">Specify Change to the System</h4>
+        <h4 class="text-center mb-4">Rescheduling</h4>
         @if (!string.IsNullOrEmpty(ViewBag.Message))
         {
             <div class="alert alert-info text-center">
@@ -15,48 +16,49 @@
         <div class="container mt-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab">Machine Down</button>
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#down" type="button" role="tab">Machine Down</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab">Material Delay</button>
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#delay" type="button" role="tab">Material Delay</button>
                 </li>
             </ul>
+
             <div class="tab-content mt-3" id="myTabContent">
+
                 <!-- Machine down -->
-                <div class="tab-pane fade show active" id="home" role="tabpanel">
-                    <form asp-action="Reschedule" asp-controller="Schedules" method="post" enctype="multipart/form-data">
+                <div class="tab-pane fade show active" id="down" role="tabpanel">
+                    <form asp-action="Reschedule_down" asp-controller="Schedules" method="post">
                         <div class="row mb-3">
                             <div class="col-md-12 d-flex align-items-center">
                                 <label for="machine" class="me-2 fw-bold"> Machine/Resource: </label>
                                 <select class="form-select" id="machine" name="Machine">
                                     <option value="">Select a Machine</option>
-                                    <option value="MachineA">Machine A</option>
-                                    <option value="MachineB">Machine B</option>
-                                    <option value="MachineC">Machine C</option>
+                                    @foreach (var item in Model.Machines)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
                                 </select>
                             </div>
                         </div>
 
                         <!-- Down date and time -->
                         <div class="row mb-3">
-                            <div class="col-md-6 d-flex align-items-center">
-                                <label for="hours" class="me-2 fw-bold">Date:</label>
-                                <input type="date" class="form-control" id="date" name="Date"
-                                       value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
-                            </div>
-
-                            <div class="col-md-6 d-flex align-items-center">
-                                <label for="reason" class="me-2 fw-bold"> Time: </label>
-                                <input type="time" class="form-control" id="time" name="time"
-                                       value="@DateTime.Now.ToString("HH:mm")" required>
-                            </div>
+                            <label for="start_date" class="me-2 fw-bold">Down Start DateTime:</label>
+                            <input type="datetime-local" class="form-control" id="start_date" name="Start_Date"
+                                   required>   
                         </div>
 
-                        <!-- Duration -->
+                        <div class="row mb-3">
+                            <label for="finish_date" class="me-2 fw-bold">Down Finish DateTime:</label>
+                            <input type="datetime-local" class="form-control" id="finish_date" name="Finish_Date"
+                                   required>   @* value="@DateTime.Now.ToString("yyyy-MM-dd")" *@
+                        </div>
+
+                        <!-- Description -->
                         <div class="row mb-3">
                             <div class="col-md-12 d-flex align-items-center">
-                                <label for="machine" class="me-4 fw-bold" style="width: 250px"> Duration (hours): </label>
-                                <input type="number" class="form-control" id="time" name="time" value="2" required>
+                                <label for="description" class="me-4 fw-bold" style="width: 100px">Description:</label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Optional Reason ...">
                             </div>
                         </div>
 
@@ -68,46 +70,57 @@
                 </div>
 
                 <!-- Material delay -->
-                <div class="tab-pane fade" id="profile" role="tabpanel">
-                    <form asp-action="Reschedule" asp-controller="Schedules" method="post" enctype="multipart/form-data">
-
-                        <!-- Down date and time -->
-                        <div class="row mb-3">
-                            <div class="col-md-6 d-flex align-items-center">
-                                <label for="hours" class="me-2 fw-bold">Date:</label>
-                                <input type="date" class="form-control" id="date" name="Date"
-                                       value="@DateTime.Now.ToString("yyyy-MM-dd")" required>
-                            </div>
-
-                            <div class="col-md-6 d-flex align-items-center">
-                                <label for="reason" class="me-2 fw-bold"> Time: </label>
-                                <input type="time" class="form-control" id="time" name="time"
-                                       value="@DateTime.Now.ToString("HH:mm")" required>
-                            </div>
-                        </div>
-
-                        <!-- Duration -->
+                <div class="tab-pane fade show" id="delay" role="tabpanel">
+                    <form asp-action="Reschedule_delay" asp-controller="Schedules" method="post">
                         <div class="row mb-3">
                             <div class="col-md-12 d-flex align-items-center">
-                                <label for="machine" class="me-2 fw-bold" style="width: 250px"> Duration (hours): </label>
-                                <input type="number" class="form-control" id="time" name="time" value="2" required>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-12 d-flex align-items-center">
-                                <label for="machine" class="me-2 fw-bold" style="width: 100px"> Task : </label>
-                                <select class="form-select" id="machine" name="Machine">
-                                    <option value="Task1">Task 1 ... </option>
-                                    <option value="Task2">Task 2 ... </option>
+                                <label for="machine" class="me-2 fw-bold"> Machine/Resource: </label>
+                                <select class="form-select" id="machine" name="Machine" required>
+                                    @foreach (var item in Model.Machines)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
                                 </select>
                             </div>
                         </div>
 
-                        <!-- Confirmation Checkbox -->
-                        <div class="mb-3 d-flex align-items-center">
-                            <input type="checkbox" class="form-check-input me-2" id="confirm" name="Confirm" value="true" required>
-                            <label class="form-check-label fw-bold" for="confirm">I confirm the rescheduling</label>
+                        <div class="row mb-3">
+                            <div class="col-md-12 d-flex align-items-center">
+                                <label for="job" class="me-2 fw-bold"> Job: </label>
+                                <!-- Job dropdown -->
+                                <select class="form-select" id="job" name="Job" required>
+                                    @foreach (var item in Model.Jobs)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-12 d-flex align-items-center">
+                                <label for="job" class="me-2 fw-bold"> Task: </label>
+                                <!-- Task dropdown -->
+                                <select class="form-select" id="task" name="Task" required>
+                                    @foreach (var item in Model.Tasks)
+                                    {
+                                        <option value="@item.Id">@item.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="materialReadyDatetime" class="me-2 fw-bold">Material Ready Datetime</label>
+                            <input type="datetime-local" id="ready_datetime" name="ready_datetime" class="form-control" required />
+                        </div>
+
+                        <!-- Description -->
+                        <div class="row mb-3">
+                            <div class="col-md-12 d-flex align-items-center">
+                                <label for="description" class="me-4 fw-bold" style="width: 100px">Description:</label>
+                                <input type="text" class="form-control" id="description" name="description" placeholder="Optional description...">
+                            </div>
                         </div>
 
                         <!-- Submit Button -->
@@ -116,8 +129,50 @@
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
 
     </div>
 </div>
+
+
+@* <select class="form-select" id="machine-delay" name="Machine" required>
+    <option selected disabled value="">Select Machine</option>
+    @foreach (var item in Model.Machines)
+    {
+        <option value="@item.Id">@item.Name</option>
+    }
+</select>
+<select class="form-select mt-2" id="job-delay" name="Job" required>
+    <option selected disabled value="">Select Job</option>
+</select>
+<select class="form-select mt-2" id="task-delay" name="Task" required>
+    <option selected disabled value="">Select Task</option>
+</select>
+ *@
+
+@* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $('#machine-delay').on('change', function () {
+        var machineId = $(this).val();
+        $.get('/Schedules/GetJobsByMachine', { machineId: machineId }, function (jobs) {
+            $('#job-delay').empty().append('<option disabled selected>Select Job</option>');
+            $('#task-delay').empty().append('<option disabled selected>Select Task</option>');
+            $.each(jobs, function (i, job) {
+                $('#job-delay').append('<option value="' + job.id + '">' + job.name + '</option>');
+            });
+        });
+    });
+
+    $('#job-delay').on('change', function () {
+        var jobId = $(this).val();
+        $.get('/Schedules/GetTasksByJob', { jobId: jobId }, function (tasks) {
+            $('#task-delay').empty().append('<option disabled selected>Select Task</option>');
+            $.each(tasks, function (i, task) {
+                $('#task-delay').append('<option value="' + task.id + '">' + task.name + '</option>');
+            });
+        });
+    });
+</script>
+ *@

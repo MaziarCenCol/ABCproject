@@ -1,20 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\jobs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\jobs\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\projects\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\projects\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|d:\\canada\\college\\centennialprojects\\abc\\abcproject\\web\\views\\tasks\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\tasks\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -22,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,45 +22,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Tasks\\Details.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Tasks\\Details.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Tasks\\Details.cshtml",
-              "RelativeToolTip": "Web\\Views\\Tasks\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T15:43:08.801Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Projects\\Details.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Projects\\Details.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Projects\\Details.cshtml",
-              "RelativeToolTip": "Web\\Views\\Projects\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T15:42:35.745Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Jobs\\Details.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Jobs\\Details.cshtml",
-              "ToolTip": "D:\\CANADA\\College\\CentennialProjects\\ABC\\ABCproject\\Web\\Views\\Jobs\\Details.cshtml",
-              "RelativeToolTip": "Web\\Views\\Jobs\\Details.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-30T15:41:53.393Z",
-              "EditorCaption": ""
             }
           ]
         },

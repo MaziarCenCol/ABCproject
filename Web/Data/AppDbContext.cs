@@ -17,15 +17,15 @@ namespace Web.Data
         public DbSet<Project> Projects { get; set; } = null!;
         public DbSet<Task> Tasks { get; set; } = null!;
         public DbSet<Operation> Operations { get; set; } = null!;
-        public DbSet<Machine> Machines { get; set; } = null!;
-        public DbSet<MachineWeeklyUpTime> MachineWeeklyUpTimes { get; set; } = null!;
         public DbSet<Job> Jobs { get; set; } = null!;
         public DbSet<TaskMachine> TaskMachines { get; set; } = null!;
-
         public DbSet<TaskSchedule> TaskSchedules { get; set; } = null!;
 
+        public DbSet<Machine> Machines { get; set; } = null!;
+        public DbSet<MachineWeeklyUpTime> MachineWeeklyUpTimes { get; set; } = null!;
         public DbSet<MachineDownSchedule> MachineDownSchedules { get; set; } = null!;
         public DbSet<MachineOpName> MachineOpNames { get; set; } = null!;
+        public DbSet<MachineUnscheduledDownTime> MachineUnscheduledDownTimes { get; set; } = null!;
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
