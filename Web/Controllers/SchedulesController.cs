@@ -5,6 +5,7 @@ using System.Text.Json;
 using Web.Models;
 using System.Text;
 using Web.Models.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Web.Controllers
 {
@@ -157,7 +158,16 @@ namespace Web.Controllers
         // Display Schedule Graph
         public IActionResult DisplaySchedule()
         {
-            ViewBag.PlotPath = "/plots/plot.html"; // Pass plot path to view
+            var relativePath = "/plots/plot.html";
+            var wwwrootPath = _env.WebRootPath; // Inject IWebHostEnvironment
+            var expectedFilePath = Path.Combine(wwwrootPath, relativePath.TrimStart('/'));
+
+            // Check if file exists and log the result
+            bool fileExists = System.IO.File.Exists(expectedFilePath);
+
+            ViewBag.PlotPath = relativePath;
+            ViewBag.AbsolutePlotPath = expectedFilePath;
+            ViewBag.FileExists = fileExists;
             return View();
         }
 
@@ -181,6 +191,11 @@ namespace Web.Controllers
             // Pass the current collections to the view
             ViewBag.MachineDowns = JsonSerializer.Deserialize<List<MachineDown>>(HttpContext.Session.GetString("MachineDowns"));
             ViewBag.MaterialDelays = JsonSerializer.Deserialize<List<MaterialDelay>>(HttpContext.Session.GetString("MaterialDelays"));
+
+            // ViewBag.MachineDowns = JsonSerializer.Deserialize<List<MachineDown>>(
+            //     HttpContext.Session.GetString("MachineDowns") ?? JsonSerializer.Serialize(new List<MachineDown>()));
+            // ViewBag.MaterialDelays = JsonSerializer.Deserialize<List<MaterialDelay>>(
+            //     HttpContext.Session.GetString("MaterialDelays") ?? JsonSerializer.Serialize(new List<MaterialDelay>()));
 
             return View(machineJobTask);
         }
@@ -425,6 +440,7 @@ namespace Web.Controllers
                 .ToList();
             machineJobTask.Jobs = _context.Jobs
                 .Where(j => _context.Tasks.Any(t => t.JobId == j.Id && _context.TaskSchedules.Any(ts => ts.TaskId == t.Id)))
+                .OrderBy(j => j.JobNo)
                 .ToList();
 
 
@@ -450,6 +466,8 @@ namespace Web.Controllers
             // Examine what's in the Tasks table for this job
             var tasks = _context.Tasks
                 .Where(t => t.JobId == job.Id)
+                .Include(t => t.Operation)
+                .OrderBy(t => t.TaskSeq)
                 .ToList();
 
             _logger.LogInformation($"Found {tasks.Count} tasks for job {jobNo}");
@@ -462,10 +480,56 @@ namespace Web.Controllers
             return Json(tasks.Select(t => new
             {
                 t.TaskSeq,
-                t.Description
+                t.Description,
+                OperationCode = t.Operation?.OperationCode,
+                OperationDescription = t.Operation?.OperationDescription
             }));
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateReschedule(DateTime rescheduleStartDate)
+        {
+            try
+            {
+                // Format the datetime to ISO format
+                var formattedDateTime = rescheduleStartDate.ToString("yyyy-MM-ddTHH:mm:ssZ");
+
+                // Create the payload
+                var payload = new
+                {
+                    rescheduling_start_datetime = formattedDateTime
+                };
+
+                // Call the API
+                var apiUrl = "http://127.0.0.1:8000/api/reschedule";
+
+                using (var httpClient = new HttpClient())
+                {
+                    var options = new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                        WriteIndented = true
+                    };
+
+                    var json = JsonSerializer.Serialize(payload, options);
+                    _logger.LogInformation($"Sending reschedule payload: {json}");
+
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await httpClient.PostAsync(apiUrl, content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    _logger.LogInformation($"API Response: {responseContent}");
+
+                    // Return the API response directly
+                    return Content(responseContent, "application/json");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error in CreateReschedule: {ex.Message}");
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 
     // Add model classes for session storage
