@@ -27,6 +27,10 @@
                     <button class="nav-link" id="queue-tab" data-bs-toggle="tab" data-bs-target="#queue" type="button"
                         role="tab">All Changes</button>
                 </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="create-tab" data-bs-toggle="tab" data-bs-target="#create" type="button"
+                        role="tab">Create Reschedule</button>
+                </li>
             </ul>
 
             <div class="tab-content mt-3" id="myTabContent">
@@ -84,10 +88,7 @@
                                 <label for="job" class="me-2 fw-bold"> Job: </label>
                                 <!-- Job dropdown -->
                                 <select class="form-select" id="job" name="Job" required>
-                                    @foreach (var item in Model.Jobs)
-                                    {
-                                        <option value="@item.JobNo">@item.JobNo - @item.Name</option>
-                                    }
+                                    <option value="">Select a Job</option>
                                 </select>
                             </div>
                         </div>
@@ -97,10 +98,7 @@
                                 <label for="job" class="me-2 fw-bold"> Task: </label>
                                 <!-- Task dropdown -->
                                 <select class="form-select" id="task" name="Task" required>
-                                    @foreach (var item in Model.Tasks)
-                                    {
-                                        <option value="@item.TaskSeq">@item.TaskSeq - @item.Description</option>
-                                    }
+                                    <option value="">Select a Task</option>
                                 </select>
                             </div>
                         </div>
@@ -126,6 +124,7 @@
                         </div>
                     </form>
                 </div>
+
 
                 <!-- Queue and Final Submit -->
                 <div class="tab-pane fade" id="queue" role="tabpanel">
@@ -238,6 +237,23 @@
                         </div>
                     </form>
                 </div>
+
+                <!-- Create Reschedule -->
+                <div class="tab-pane fade show" id="create" role="tabpanel">
+                    <div class="row mb-3">
+                        <label for="reschedule_start_date" class="me-2 fw-bold">Reschedule Start DateTime:</label>
+                        <input type="datetime-local" class="form-control" id="reschedule_start_date"
+                            name="reschedule_start_date" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="button" id="create_reschedule_btn" class="btn btn-primary">Submit
+                            Rescheduling</button>
+                    </div>
+
+                    <div id="reschedule_result" class="mt-3 alert" style="display: none;"></div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -315,9 +331,65 @@
                     }
                 }
             }
+
+            // Create Reschedule button click handler
+            const createRescheduleBtn = document.getElementById('create_reschedule_btn');
+            if (createRescheduleBtn) {
+                createRescheduleBtn.addEventListener('click', function () {
+                    const startDateTime = document.getElementById('reschedule_start_date').value;
+                    const resultDiv = document.getElementById('reschedule_result');
+
+                    if (!startDateTime) {
+                        resultDiv.className = 'mt-3 alert alert-danger';
+                        resultDiv.textContent = 'Please select a start date and time';
+                        resultDiv.style.display = 'block';
+                        return;
+                    }
+
+                    // Show loading state
+                    createRescheduleBtn.disabled = true;
+                    createRescheduleBtn.textContent = 'Submitting...';
+                    resultDiv.style.display = 'none';
+
+                    // Make the API call to our controller instead
+                    fetch('/Schedules/CreateReschedule', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            "rescheduleStartDate": startDateTime
+                        })
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success === true) {
+                                resultDiv.className = 'mt-3 alert alert-success';
+                                resultDiv.textContent = 'Rescheduling request submitted successfully!';
+                            } else {
+                                resultDiv.className = 'mt-3 alert alert-danger';
+                                resultDiv.textContent = 'Rescheduling request failed. ' + (data.message || '');
+                            }
+                            resultDiv.style.display = 'block';
+                        })
+                        .catch(error => {
+                            resultDiv.className = 'mt-3 alert alert-danger';
+                            resultDiv.textContent = 'Error: ' + error.message;
+                            resultDiv.style.display = 'block';
+                        })
+                        .finally(() => {
+                            // Reset button state
+                            createRescheduleBtn.disabled = false;
+                            createRescheduleBtn.textContent = 'Submit Rescheduling';
+                        });
+                });
+            }
         });
 
         $(document).ready(function () {
+            // Load and sort jobs
+            loadJobs();
+
             // Existing job change handler
             $('#job').change(function () {
                 var job_no = $(this).val();
@@ -328,6 +400,39 @@
             var initialJobNo = $('#job').val();
             if (initialJobNo) {
                 loadTasksForJob(initialJobNo);
+            } else {
+                // If no job is selected, we need to clear the task dropdown
+                $('#task').empty().append('<option value="">Select a Task</option>');
+            }
+
+            // Function to load and sort jobs
+            function loadJobs() {
+                // Get jobs from the model
+                var jobs = [];
+                            @foreach (var job in Model.Jobs)
+                    {
+                        <text>
+                            jobs.push({
+                                jobNo: @job.JobNo,
+                            name: "@Html.Raw(job.Name?.Replace("\"", "\\\""))"
+                                            });
+                        </text>
+                }
+
+                    // Sort jobs by jobNo
+                    jobs.sort(function (a, b) {
+                        return a.jobNo - b.jobNo;
+                    });
+
+                // Populate the dropdown
+                $('#job').empty().append('<option value="">Select a Job</option>');
+                $.each(jobs, function (i, job) {
+                    $('#job').append(
+                        $('<option></option>')
+                            .val(job.jobNo)
+                            .text(job.jobNo + ' - ' + job.name)
+                    );
+                });
             }
 
             // Helper function to load tasks
@@ -339,11 +444,27 @@
                 if (job_no) {
                     $.getJSON('/Schedules/GetTasksByJob?jobNo=' + job_no, function (data) {
                         console.log("Tasks returned:", data);
+
+                        // Sort the data by TaskSeq (numeric sort)
+                        data.sort(function (a, b) {
+                            return a.taskSeq - b.taskSeq;
+                        });
+
                         $.each(data, function (i, task) {
+                            var displayText = task.taskSeq;
+
+                            if (task.operationCode) {
+                                displayText += " - " + task.operationCode;
+                            }
+
+                            if (task.operationDescription) {
+                                displayText += " - " + task.operationDescription;
+                            }
+
                             $('#task').append(
                                 $('<option></option>')
                                     .val(task.taskSeq)
-                                    .text(task.taskSeq + " - " + task.description)
+                                    .text(displayText)
                             );
                         });
                     }).fail(function (jqXHR, textStatus, errorThrown) {
