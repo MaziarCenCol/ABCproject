@@ -3,7 +3,7 @@ import pandas as pd
 import json
 
 # Define file paths
-json_file = "wwwroot/schedule.json"  # Ensure path matches your .NET app
+json_file = "wwwroot/files/schedule.json"  # Ensure path matches your .NET app
 output_file = "wwwroot/plots/plot.html"
 
 def generate_plot():
