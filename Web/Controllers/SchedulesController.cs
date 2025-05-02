@@ -419,7 +419,6 @@ namespace Web.Controllers
         {
             MachineJobTask machineJobTask = new MachineJobTask();
             machineJobTask.Machines = _context.Machines
-                .Where(m => _context.TaskSchedules.Any(ts => ts.MachineId == m.Id))
                 .ToList();
             machineJobTask.Tasks = _context.Tasks
                 .Where(m => _context.TaskSchedules.Any(ts => ts.TaskId == m.Id))
@@ -432,30 +431,40 @@ namespace Web.Controllers
             return machineJobTask;
         }
 
-        /* AJAX
-        [HttpGet]
-        public JsonResult GetJobsByMachine(int machineId)
-        {
-            var jobs = _context.Jobs
-                .Where(j => _context.Tasks.Any(t => t.JobId == j.Id && t.MachineId == machineId))
-                .Select(j => new { j.Id, j.Name })
-                .Distinct()
-                .ToList();
-
-            return Json(jobs);
-        }
+        /* AJAX */
 
         [HttpGet]
-        public JsonResult GetTasksByJob(int jobId)
+        public JsonResult GetTasksByJob(int jobNo)
         {
+            // Check if we're getting the right parameter
+            _logger.LogInformation($"GetTasksByJob called with jobNo={jobNo}");
+
+            var job = _context.Jobs.FirstOrDefault(j => j.JobNo == jobNo);
+
+            if (job == null)
+            {
+                _logger.LogError($"Job with jobNo={jobNo} not found");
+                return Json(new List<object>());
+            }
+
+            // Examine what's in the Tasks table for this job
             var tasks = _context.Tasks
-                .Where(t => t.JobId == jobId)
-                .Select(t => new { t.Id, t.Name })
+                .Where(t => t.JobId == job.Id)
                 .ToList();
 
-            return Json(tasks);
+            _logger.LogInformation($"Found {tasks.Count} tasks for job {jobNo}");
+
+            // Check all tasks to help debug
+            var allTasks = _context.Tasks.ToList();
+            _logger.LogInformation($"Total tasks in database: {allTasks.Count}");
+
+            // Return simplified task objects for the dropdown
+            return Json(tasks.Select(t => new
+            {
+                t.TaskSeq,
+                t.Description
+            }));
         }
-        */
 
     }
 

@@ -316,5 +316,41 @@
                 }
             }
         });
+
+        $(document).ready(function () {
+            // Existing job change handler
+            $('#job').change(function () {
+                var job_no = $(this).val();
+                loadTasksForJob(job_no);
+            });
+
+            // Initial load - trigger tasks for pre-selected job (if any)
+            var initialJobNo = $('#job').val();
+            if (initialJobNo) {
+                loadTasksForJob(initialJobNo);
+            }
+
+            // Helper function to load tasks
+            function loadTasksForJob(job_no) {
+                console.log("Loading tasks for job:", job_no);
+
+                $('#task').empty().append('<option value="">Select a Task</option>');
+
+                if (job_no) {
+                    $.getJSON('/Schedules/GetTasksByJob?jobNo=' + job_no, function (data) {
+                        console.log("Tasks returned:", data);
+                        $.each(data, function (i, task) {
+                            $('#task').append(
+                                $('<option></option>')
+                                    .val(task.taskSeq)
+                                    .text(task.taskSeq + " - " + task.description)
+                            );
+                        });
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        console.error("AJAX error:", textStatus, errorThrown);
+                    });
+                }
+            }
+        });
     </script>
 }
