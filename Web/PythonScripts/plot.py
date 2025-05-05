@@ -10,9 +10,26 @@ def generate_plot():
     # Read JSON data
     with open(json_file, "r") as f:
         data = json.load(f)
-
-    # Convert JSON to DataFrame
-    df = pd.DataFrame(data)
+    
+    # Access the schedule property in the JSON
+    if "schedule" not in data:
+        print("Error: 'schedule' key not found in JSON data")
+        return
+    
+    schedule_data = data["schedule"]
+    
+    # If schedule is an array of items
+    if isinstance(schedule_data, list):
+        df = pd.DataFrame(schedule_data)
+    # If schedule contains nested properties you want as columns
+    # elif isinstance(schedule_data, dict):
+    #     # Option 1: Convert the dict directly if it's a dict of simple values
+    #     df = pd.DataFrame([schedule_data])
+    #     # Option 2: If it's a dict of arrays with equal length
+    #     # df = pd.DataFrame({k: v for k, v in schedule_data.items() if isinstance(v, list)})
+    else:
+        print(f"Error: Unexpected schedule data format: {type(schedule_data)}")
+        return
 
     # Ensure Start/Finish columns are in datetime format
     df["Start"] = pd.to_datetime(df["Start"])
