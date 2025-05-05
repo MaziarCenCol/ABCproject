@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\CentennialCode\\ABCproject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\controllers\\schedulescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\pythonscripts\\plot.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\pythonscripts\\plot.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\schedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -19,14 +31,6 @@
       "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\wwwroot\\files\\schedule.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\pythonscripts\\plot.py||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\pythonscripts\\plot.py||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\createschedule.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|c:\\centennialcode\\abcproject\\web\\views\\schedules\\configureation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{6C242E81-3FC9-484D-BC0B-34594B7F0BEE}|Web\\Web.csproj|solutionrelative:web\\views\\schedules\\configureation.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -41,8 +45,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 163,
-          "SelectedChildIndex": 5,
+          "DockedWidth": 178,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,13 +70,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Reschedule.cshtml",
               "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Reschedule.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Reschedule.cshtml",
               "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Reschedule.cshtml",
               "RelativeToolTip": "Web\\Views\\Schedules\\Reschedule.cshtml",
-              "ViewState": "AgIAAIoBAAAAAAAAAAASwMQBAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAowCYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T05:20:37.788Z",
               "EditorCaption": ""
@@ -80,6 +84,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "CreateSchedule.cshtml",
+              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAiwLEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T05:21:03.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SchedulesController.cs",
+              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Controllers\\SchedulesController.cs",
+              "RelativeDocumentMoniker": "Web\\Controllers\\SchedulesController.cs",
+              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Controllers\\SchedulesController.cs",
+              "RelativeToolTip": "Web\\Controllers\\SchedulesController.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAmwIAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T03:12:37.204Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "plot.py",
+              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\PythonScripts\\plot.py",
+              "RelativeDocumentMoniker": "Web\\PythonScripts\\plot.py",
+              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\PythonScripts\\plot.py",
+              "RelativeToolTip": "Web\\PythonScripts\\plot.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhPtZTPSxtBFMc/s7NZN6zYpnE1XST\u002BOBkKSQVPFdJS8CSlID31X\u002BmfZC\u002B2Bw8GqUIpvXgpHkXRXsoS3a3pml2zMz04a4Npe6l98BiYN\u002B8z3zfzZuAuTWstbs8BNvDAjNbtoDEFDIAzM97YMPAe8AhoA3Wg9BegBjLgBNgDDoCYIaAAVoBXwAtgGpCAEEIgpURrTZ7nw9AB8A14D7wFPgJamuAY8Nr4nFFnl0ol6XmenJiYkEIIqbW\u002BcbOmAjwEusBnIC\u002BAVeAl8MQsRAjBzMwMzWaTxcVF\u002Bv0\u002Btm2jlCLLsl86r8UcAZ\u002BAHwXwPvAceGzbtgyCgNXVVdrtNgsLCwghSJKEIAio1\u002Bv4vo9SisvLS5RSypzhHnBhG6BlXNi2zfT0NK1Wi\u002BXlZSqVCr1ej5WVFRzHwbIsTk5O2NzcJIoiBoOBGMofvUUhBLZtkyQJSZLgeR5LS0usr6\u002BztrZGu92m0WgwNjaGEKNdV5R8D3gGNKWU0vM8wjDk\u002BPiYMAxxXZdqtUqe5xwdHbG7u8vW1hZxHBclfwE\u002BAN9HFAJIeb1PHMccHBzQ6XQ4PT3l/Pyc/f19Op0OaZqitb6d\u002BvuSXddlcnKSWq3G1NQUnucBEEURaZpSLpcpl8tY1kj6KFBrTZqmVCoVZmdnmZubw/d9LMtCa021WmV\u002Bfv6PZ1gAlXE9GAwIw5But0uWZTiOw/j4OFmWcXZ2RhzHpGlatAzmGRb5N5fiAk\u002BBpta61Ov1ODw8JAxDSqUSQRCglGJnZ4eNjQ22t7eJoqgAXgH7QAdICqUO8MZ0fLGbchxH\u002Bb6vGo2GarVaqlarKdd1b\u002BLGj02uM6ywCEpgyjwnlee56vf7eRzHebfbzS8uLvKrq6scyIEU\u002BAq8A7YM\u002BP99X8P2Tx/sndtP/P0hgs5woJIAAAAASUVORK5CYII=",
+              "WhenOpened": "2025-05-02T05:07:00.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DisplaySchedule.cshtml",
               "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\DisplaySchedule.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
@@ -92,20 +135,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "plot.py",
-              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\PythonScripts\\plot.py",
-              "RelativeDocumentMoniker": "Web\\PythonScripts\\plot.py",
-              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\PythonScripts\\plot.py",
-              "RelativeToolTip": "Web\\PythonScripts\\plot.py",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhPtZTPSxtBFMc/s7NZN6zYpnE1XST\u002BOBkKSQVPFdJS8CSlID31X\u002BmfZC\u002B2Bw8GqUIpvXgpHkXRXsoS3a3pml2zMz04a4Npe6l98BiYN\u002B8z3zfzZuAuTWstbs8BNvDAjNbtoDEFDIAzM97YMPAe8AhoA3Wg9BegBjLgBNgDDoCYIaAAVoBXwAtgGpCAEEIgpURrTZ7nw9AB8A14D7wFPgJamuAY8Nr4nFFnl0ol6XmenJiYkEIIqbW\u002BcbOmAjwEusBnIC\u002BAVeAl8MQsRAjBzMwMzWaTxcVF\u002Bv0\u002Btm2jlCLLsl86r8UcAZ\u002BAHwXwPvAceGzbtgyCgNXVVdrtNgsLCwghSJKEIAio1\u002Bv4vo9SisvLS5RSypzhHnBhG6BlXNi2zfT0NK1Wi\u002BXlZSqVCr1ej5WVFRzHwbIsTk5O2NzcJIoiBoOBGMofvUUhBLZtkyQJSZLgeR5LS0usr6\u002BztrZGu92m0WgwNjaGEKNdV5R8D3gGNKWU0vM8wjDk\u002BPiYMAxxXZdqtUqe5xwdHbG7u8vW1hZxHBclfwE\u002BAN9HFAJIeb1PHMccHBzQ6XQ4PT3l/Pyc/f19Op0OaZqitb6d\u002BvuSXddlcnKSWq3G1NQUnucBEEURaZpSLpcpl8tY1kj6KFBrTZqmVCoVZmdnmZubw/d9LMtCa021WmV\u002Bfv6PZ1gAlXE9GAwIw5But0uWZTiOw/j4OFmWcXZ2RhzHpGlatAzmGRb5N5fiAk\u002BBpta61Ov1ODw8JAxDSqUSQRCglGJnZ4eNjQ22t7eJoqgAXgH7QAdICqUO8MZ0fLGbchxH\u002Bb6vGo2GarVaqlarKdd1b\u002BLGj02uM6ywCEpgyjwnlee56vf7eRzHebfbzS8uLvKrq6scyIEU\u002BAq8A7YM\u002BP99X8P2Tx/sndtP/P0hgs5woJIAAAAASUVORK5CYII=",
-              "WhenOpened": "2025-05-02T05:07:00.03Z",
+              "DocumentIndex": 3,
+              "Title": "Schedule.cshtml",
+              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
+              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Schedule.cshtml",
+              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
+              "RelativeToolTip": "Web\\Views\\Schedules\\Schedule.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-02T05:20:38.852Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "schedule.json",
               "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\wwwroot\\files\\schedule.json",
               "RelativeDocumentMoniker": "Web\\wwwroot\\files\\schedule.json",
@@ -118,19 +161,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateSchedule.cshtml",
-              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
-              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\CreateSchedule.cshtml",
-              "RelativeToolTip": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:21:03.238Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Status.cshtml",
               "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Status.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Status.cshtml",
@@ -142,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Configureation.cshtml",
               "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Configureation.cshtml",
               "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Configureation.cshtml",
@@ -151,25 +182,6 @@
               "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-02T04:58:52.811Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 190,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Schedule.cshtml",
-              "DocumentMoniker": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
-              "RelativeDocumentMoniker": "Web\\Views\\Schedules\\Schedule.cshtml",
-              "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Views\\Schedules\\Schedule.cshtml",
-              "RelativeToolTip": "Web\\Views\\Schedules\\Schedule.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:20:38.852Z",
-              "EditorCaption": ""
             }
           ]
         }

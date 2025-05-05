@@ -5,6 +5,7 @@
 }
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +20,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -50,32 +52,33 @@
             color: lightgray !important;
         }
 
-            nav .navbar-nav li a:hover {
-                color: orangered !important;
-            }
+        nav .navbar-nav li a:hover {
+            color: orangered !important;
+        }
 
         .nav-link {
             border-bottom: 2px solid transparent;
         }
 
-            .nav-link:hover {
-                color: orange;
-                border-bottom: 2px solid orangered;
-            }
+        .nav-link:hover {
+            color: orange;
+            border-bottom: 2px solid orangered;
+        }
     </style>
 </head>
 
 <body>
     <!-- Top nav -->
-    <nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark top-navbar navbar-toggleable-sm box-shadow p-0 mb-0 py-sm-0" style="z-index: 1030; ">
+    <nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark top-navbar navbar-toggleable-sm box-shadow p-0 mb-0 py-sm-0"
+        style="z-index: 1030; ">
         <div class="container-fluid">
             <a class="navbar-brand" href="https://abctechnologies.com/">
                 <img src="~/images/ABClogo.png" style="width: 60px" />
             </a>
             <span style="font-size=18px; font-weight:bold; color:gray">ABC TECHNOLOGIES</span>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -92,7 +95,8 @@
                         else
                         {
                             <li>
-                                <a class="nav-link text-warning" asp-controller="Users" asp-action="Details" asp-route-id="@_id">@_name</a>
+                                <a class="nav-link text-warning" asp-controller="Users" asp-action="Details"
+                                    asp-route-id="@_id">@_name</a>
                             </li>
                             <li>
                                 <span class="nav-link text-white" style="color:lightgray" asp-area="">(@_role)</span>
@@ -125,23 +129,28 @@
                             <span> </span>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Configureation">Resouce Parameters</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules"
+                                asp-action="Configureation">Resouce Parameters</a>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Status">Resource Status</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Status">Resource
+                                Status</a>
                         </li>
 
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="CreateSchedule">Create Schedule</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules"
+                                asp-action="CreateSchedule">Create Schedule</a>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Schedule">View Schedule</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Schedule">View
+                                Schedule</a>
                         </li>
                         <li class="nav-item my-auto">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules" asp-action="Reschedule">Reschedule</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Schedules"
+                                asp-action="Reschedule">Reschedule</a>
                         </li>
                         <li class="nav-item my-auto py-2 text-secondary">
-                            <span > </span>
+                            <span> </span>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Projects" asp-action="Index">Projects</a>
@@ -150,7 +159,8 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Machines" asp-action="Index">Machines</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Materials" asp-action="Index">Materials</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Materials"
+                                asp-action="Index">Materials</a>
                         </li>
                         <li class="nav-item my-auto py-2 text-secondary">
                             <span> </span>
@@ -166,16 +176,18 @@
         @{
             if (TempData["success"] != null)
             {
-                <div style="z-index: 999; padding: 10px; margin: 0; text-align: center" class="alert alert-success mt-1">@TempData["success"]</div>
+                <div style="z-index: 999; padding: 10px; margin: 0; text-align: center" class="alert alert-success mt-1">
+                    @TempData["success"]</div>
             }
             if (TempData["error"] != null)
             {
-                <div style="z-index: 999; padding: 10px; margin: 0; text-align: center" class="alert alert-danger mt-1">@TempData["error"]</div>
+                <div style="z-index: 999; padding: 10px; margin: 0; text-align: center" class="alert alert-danger mt-1">
+                    @TempData["error"]</div>
             }
         }
 
         <!-- Main content -->
-        <div class="flex-grow-1" >
+        <div class="flex-grow-1">
             <div class="container">
                 @RenderBody()
             </div>
@@ -192,4 +204,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
+
 </html>

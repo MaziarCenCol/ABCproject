@@ -11,12 +11,12 @@ namespace Web.Controllers
 {
     public class SchedulesController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<SchedulesController> _logger;
         private readonly AppDbContext _context;
         private readonly string _jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "schedule.json");
         private readonly IWebHostEnvironment _env;
 
-        public SchedulesController(ILogger<HomeController> logger, AppDbContext context, IWebHostEnvironment env)
+        public SchedulesController(ILogger<SchedulesController> logger, AppDbContext context, IWebHostEnvironment env)
         {
             _logger = logger;
             _context = context;
@@ -109,7 +109,8 @@ namespace Web.Controllers
         // ------------ Scheduling ------------
         public IActionResult Schedule()
         {
-            return View();
+            //return View();
+            return RedirectToAction("DisplaySchedule");
         }
 
         [HttpPost]
@@ -122,36 +123,128 @@ namespace Web.Controllers
             }
 
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", "schedule.json");
+            string plotFilePath = Path.Combine(_env.WebRootPath, "plots", "plot.html");
 
-            if (System.IO.File.Exists(jsonFilePath))
+            try
             {
-                RunPythonScript(); // Generate Plotly graph based on existing file
-                return RedirectToAction("DisplaySchedule");
+                if (System.IO.File.Exists(jsonFilePath))
+                {
+                    // Delete existing file first to avoid locking issues
+                    if (System.IO.File.Exists(plotFilePath))
+                    {
+                        try
+                        {
+                            System.IO.File.Delete(plotFilePath);
+                            _logger.LogInformation("Deleted existing plot file");
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError($"Could not delete existing plot file: {ex.Message}");
+                        }
+                    }
+
+                    RunPythonScript(); // Generate Plotly graph based on existing file
+
+                    // Short delay might help if there's a file system race condition
+                    System.Threading.Thread.Sleep(100);
+
+                    if (System.IO.File.Exists(plotFilePath))
+                    {
+                        _logger.LogInformation("Plot file exists, redirecting to DisplaySchedule");
+                        Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
+                        Response.Headers.Add("Pragma", "no-cache");
+                        Response.Headers.Add("Expires", "0");
+                        _logger.LogInformation("About to redirect to DisplaySchedule");
+                        var result = RedirectToAction("DisplaySchedule");
+                        _logger.LogInformation($"Redirect result created: {result.GetType().Name}");
+                        return result;
+                    }
+                    else
+                    {
+                        _logger.LogError($"Plot file does not exist AFTER script run at path: {plotFilePath}");
+                        ViewBag.Message = "Plot file was not created or found after Python script execution.";
+                        return View();
+                    }
+                }
+                else
+                {
+                    ViewBag.Message = "schedule.json file not found in /wwwroot/files.";
+                    return View();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ViewBag.Message = "schedule.json file not found in /wwwroot/files.";
+                _logger.LogError(ex, "Exception occurred during Schedule POST action processing.");
+                ViewBag.Message = $"An error occurred: {ex.Message}";
+                // Explicitly return the View() here on error instead of letting middleware handle it
                 return View();
             }
-
         }
 
         // Run Python Script to Generate Plot
+        // private string RunPythonScript()
+        // {
+        //     ProcessStartInfo psi = new ProcessStartInfo
+        //     {
+        //         FileName = "python",
+        //         Arguments = "PythonScripts/plot.py",  // Run script from PythonScripts folder
+        //         RedirectStandardOutput = true,
+        //         UseShellExecute = false,
+        //         CreateNoWindow = true
+        //     };
+
+        //     using (Process process = Process.Start(psi))
+        //     {
+        //         process.WaitForExit();
+        //         return process.StandardOutput.ReadToEnd().Trim(); // Read output (HTML file path)
+        //     }
+        // }
+
+        // Run Python Script with absolute path
         private string RunPythonScript()
         {
-            ProcessStartInfo psi = new ProcessStartInfo
+            try
             {
-                FileName = "python",
-                Arguments = "PythonScripts/plot.py",  // Run script from PythonScripts folder
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+                // Get absolute path to Python script
+                string scriptPath = Path.Combine(Directory.GetCurrentDirectory(), "PythonScripts", "plot.py");
 
-            using (Process process = Process.Start(psi))
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = $"\"{scriptPath}\"",  // Quote the path in case it contains spaces
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,  // Also capture error output
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    WorkingDirectory = Directory.GetCurrentDirectory()  // Set working directory explicitly
+                };
+
+                using (Process process = Process.Start(psi))
+                {
+                    // Read both standard output and error
+                    string output = process.StandardOutput.ReadToEnd().Trim();
+                    string error = process.StandardError.ReadToEnd().Trim();
+
+                    process.WaitForExit();
+
+                    // Log the results
+                    _logger.LogInformation($"Python script exit code: {process.ExitCode}");
+                    if (!string.IsNullOrEmpty(output))
+                        _logger.LogInformation($"Python script output: {output}");
+                    if (!string.IsNullOrEmpty(error))
+                        _logger.LogError($"Python script error: {error}");
+
+                    // If exit code is not 0, something went wrong
+                    if (process.ExitCode != 0)
+                        throw new Exception($"Python script failed with exit code {process.ExitCode}. Error: {error}");
+
+                    return output;
+                }
+            }
+            catch (Exception ex)
             {
-                process.WaitForExit();
-                return process.StandardOutput.ReadToEnd().Trim(); // Read output (HTML file path)
+                _logger.LogError($"Failed to run Python script: {ex.Message}");
+                throw;
             }
         }
 
@@ -164,6 +257,17 @@ namespace Web.Controllers
 
             // Check if file exists and log the result
             bool fileExists = System.IO.File.Exists(expectedFilePath);
+
+            // Log whether the file exists
+            _logger.LogInformation($"Plot file path: {expectedFilePath}, Exists: {fileExists}");
+
+            if (!fileExists)
+            {
+                // Add a TempData message that will persist through the redirect
+                TempData["ErrorMessage"] = "The plot file was not found. Please try regenerating the schedule.";
+                // Optionally redirect back to the Schedule action
+                //return RedirectToAction("Schedule");
+            }
 
             ViewBag.PlotPath = relativePath;
             ViewBag.AbsolutePlotPath = expectedFilePath;
@@ -529,6 +633,42 @@ namespace Web.Controllers
                 _logger.LogError($"Error in CreateReschedule: {ex.Message}");
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        [HttpPost]
+        public IActionResult RunPlotScript()
+        {
+            try
+            {
+                string jsonFilePath = Path.Combine(_env.WebRootPath, "files", "schedule.json");
+                string plotFilePath = Path.Combine(_env.WebRootPath, "plots", "plot.html");
+
+                // Delete existing plot file if it exists
+                if (System.IO.File.Exists(plotFilePath))
+                {
+                    System.IO.File.Delete(plotFilePath);
+                    _logger.LogInformation("Deleted existing plot file");
+                }
+
+                // Run the Python script
+                RunPythonScript();
+
+                return Ok(new { success = true, message = "Plot script executed" });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error running plot script: {ex.Message}");
+                return StatusCode(500, $"Failed to run Python script: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult CheckPlotReady()
+        {
+            string plotFilePath = Path.Combine(_env.WebRootPath, "plots", "plot.html");
+            bool fileExists = System.IO.File.Exists(plotFilePath);
+            _logger.LogInformation($"CheckPlotReady called, file exists: {fileExists}");
+            return Json(new { ready = fileExists });
         }
     }
 
