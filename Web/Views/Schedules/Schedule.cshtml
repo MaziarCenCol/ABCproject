@@ -12,8 +12,9 @@
                 @ViewBag.Message
             </div>
         }
-        <form asp-action="Schedule" asp-controller="Schedules" method="post">
-            <div style="text-align: center; color: #524E50; background-color: #F5F5F5; font-size: 12px; padding-top: 10px">
+        <form asp-action="Schedule" asp-controller="Schedules" method="post" data-ajax="false">
+            <div
+                style="text-align: center; color: #524E50; background-color: #F5F5F5; font-size: 12px; padding-top: 10px">
                 <label class="h5">View the schedule from the latest created file (schedule.json)</label>
             </div>
             <br />
@@ -24,12 +25,63 @@
             <br>
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary">View</button>
+                <button id="processAndViewBtn" class="btn btn-primary">Process and View Schedule</button>
             </div>
+
         </form>
+        <a href="@Url.Action("DisplaySchedule", "Schedules")" class="btn btn-primary">View Schedule Directly</a>
+        <button type="button" onclick="document.querySelector('form').submit(); return false;">Submit Without
+            JavaScript</button>
     </div>
 </div>
 
 <script>
+    document.getElementById('processAndViewBtn').addEventListener('click', async function () {
+        this.disabled = true;
+        this.textContent = "Processing...";
+
+        // Submit form to process data
+        const form = document.querySelector('form');
+        await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        });
+
+        // Poll until file exists (max 30 seconds)
+        let attempts = 0;
+        const checkInterval = setInterval(async function () {
+            const response = await fetch('@Url.Action("CheckPlotReady", "Schedules")');
+            const data = await response.json();
+
+            if (data.ready || attempts > 30) {
+                clearInterval(checkInterval);
+                window.location.href = '@Url.Action("DisplaySchedule", "Schedules")';
+            }
+            attempts++;
+        }, 1000);
+    });
+
+    // Disable any AJAX form submission libraries
+    if (window.jQuery && jQuery.ajaxPrefilter) {
+        jQuery.ajaxPrefilter(function (options, originalOptions, jqXHR) {
+            // Cancel any automatic AJAX handling for this form
+            if (options.url.includes('Schedule')) {
+                jqXHR.abort();
+            }
+        });
+    }
+    // Ensure this form performs a standard post, not AJAX
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form[asp-action="Schedule"]');
+        if (form) {
+            form.addEventListener('submit', function (e) {
+                // Prevent other handlers from capturing this
+                e.stopPropagation();
+                // Let the form submit normally - don't call e.preventDefault()
+            }, true); // Use capture phase to run before other handlers
+        }
+    });
+
     setTimeout(() => {
         document.querySelector(".alert")?.classList.add("fade", "show");
         setTimeout(() => document.querySelector(".alert")?.remove(), 2000);
