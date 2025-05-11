@@ -78,8 +78,7 @@
               "RelativeToolTip": "Web\\Views\\Schedules\\Reschedule.cshtml",
               "ViewState": "AgIAAAsAAAAAAAAAAAAowCYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:20:37.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T05:20:37.788Z"
             },
             {
               "$type": "Document",
@@ -91,8 +90,7 @@
               "RelativeToolTip": "Web\\Views\\Schedules\\CreateSchedule.cshtml",
               "ViewState": "AgIAAB8AAAAAAAAAAAAiwLEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:21:03.238Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T05:21:03.238Z"
             },
             {
               "$type": "Document",
@@ -102,7 +100,7 @@
               "RelativeDocumentMoniker": "Web\\Controllers\\SchedulesController.cs",
               "ToolTip": "C:\\CentennialCode\\ABCproject\\Web\\Controllers\\SchedulesController.cs",
               "RelativeToolTip": "Web\\Controllers\\SchedulesController.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAmwIAAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-03T03:12:37.204Z",
               "EditorCaption": ""
@@ -117,8 +115,7 @@
               "RelativeToolTip": "Web\\PythonScripts\\plot.py",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
               "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKmSURBVDhPtZTPSxtBFMc/s7NZN6zYpnE1XST\u002BOBkKSQVPFdJS8CSlID31X\u002BmfZC\u002B2Bw8GqUIpvXgpHkXRXsoS3a3pml2zMz04a4Npe6l98BiYN\u002B8z3zfzZuAuTWstbs8BNvDAjNbtoDEFDIAzM97YMPAe8AhoA3Wg9BegBjLgBNgDDoCYIaAAVoBXwAtgGpCAEEIgpURrTZ7nw9AB8A14D7wFPgJamuAY8Nr4nFFnl0ol6XmenJiYkEIIqbW\u002BcbOmAjwEusBnIC\u002BAVeAl8MQsRAjBzMwMzWaTxcVF\u002Bv0\u002Btm2jlCLLsl86r8UcAZ\u002BAHwXwPvAceGzbtgyCgNXVVdrtNgsLCwghSJKEIAio1\u002Bv4vo9SisvLS5RSypzhHnBhG6BlXNi2zfT0NK1Wi\u002BXlZSqVCr1ej5WVFRzHwbIsTk5O2NzcJIoiBoOBGMofvUUhBLZtkyQJSZLgeR5LS0usr6\u002BztrZGu92m0WgwNjaGEKNdV5R8D3gGNKWU0vM8wjDk\u002BPiYMAxxXZdqtUqe5xwdHbG7u8vW1hZxHBclfwE\u002BAN9HFAJIeb1PHMccHBzQ6XQ4PT3l/Pyc/f19Op0OaZqitb6d\u002BvuSXddlcnKSWq3G1NQUnucBEEURaZpSLpcpl8tY1kj6KFBrTZqmVCoVZmdnmZubw/d9LMtCa021WmV\u002Bfv6PZ1gAlXE9GAwIw5But0uWZTiOw/j4OFmWcXZ2RhzHpGlatAzmGRb5N5fiAk\u002BBpta61Ov1ODw8JAxDSqUSQRCglGJnZ4eNjQ22t7eJoqgAXgH7QAdICqUO8MZ0fLGbchxH\u002Bb6vGo2GarVaqlarKdd1b\u002BLGj02uM6ywCEpgyjwnlee56vf7eRzHebfbzS8uLvKrq6scyIEU\u002BAq8A7YM\u002BP99X8P2Tx/sndtP/P0hgs5woJIAAAAASUVORK5CYII=",
-              "WhenOpened": "2025-05-02T05:07:00.03Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T05:07:00.03Z"
             },
             {
               "$type": "Document",
@@ -130,8 +127,7 @@
               "RelativeToolTip": "Web\\Views\\Schedules\\DisplaySchedule.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:21:08.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T05:21:08.129Z"
             },
             {
               "$type": "Document",
@@ -143,8 +139,7 @@
               "RelativeToolTip": "Web\\Views\\Schedules\\Schedule.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-02T05:20:38.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T05:20:38.852Z"
             },
             {
               "$type": "Document",
@@ -156,8 +151,7 @@
               "RelativeToolTip": "Web\\wwwroot\\files\\schedule.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAUwGljAQABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-02T14:36:40.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-02T14:36:40.757Z"
             },
             {
               "$type": "Document",

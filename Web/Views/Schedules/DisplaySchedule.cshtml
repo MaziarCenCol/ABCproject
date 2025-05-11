@@ -11,10 +11,26 @@
     </div>
 }
 
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form id="fileSelectForm" method="get" action="@Url.Action("DisplaySchedule")">
+            <div class="form-group">
+                <label for="selectedFile">Select Schedule File:</label>
+                <select id="selectedFile" name="selectedFile" class="form-control" onchange="this.form.submit()">
+                    @foreach (var file in ViewBag.HtmlFiles)
+                    {
+                        <option value="@file" selected="@(file == ViewBag.SelectedFile)">@file</option>
+                    }
+                </select>
+            </div>
+        </form>
+    </div>
+</div>
+
 @if (ViewBag.FileExists)
 {
     <div class="alert alert-success">
-        <p>Schedule graph generated successfully!</p>
+        <p>Schedule graph loaded successfully!</p>
     </div>
     @* <iframe src="@ViewBag.PlotPath" width="100%" height="700px" style="border: 1px solid #ccc;"></iframe> *@
     <iframe src="@(ViewBag.PlotPath)?v=@DateTime.Now.Ticks" width="100%" height="700px"

@@ -113,8 +113,51 @@ namespace Web.Controllers
             return RedirectToAction("DisplaySchedule");
         }
 
+        // Helper method to fetch Gantt chart from API and save to file
+        private async Task<string> FetchAndSaveGanttChart(int version, string fileName)
+        {
+            try
+            {
+                var apiUrl = $"http://127.0.0.1:8000/api/gantt-chart/{version}";
+                var plotsDirectoryPath = Path.Combine(_env.WebRootPath, "plots");
+
+                // Create directory if it doesn't exist
+                if (!Directory.Exists(plotsDirectoryPath))
+                {
+                    Directory.CreateDirectory(plotsDirectoryPath);
+                }
+
+                var filePath = Path.Combine(plotsDirectoryPath, fileName);
+
+                using (var httpClient = new HttpClient())
+                {
+                    _logger.LogInformation($"Fetching Gantt chart from {apiUrl}");
+                    var response = await httpClient.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var htmlContent = await response.Content.ReadAsStringAsync();
+                        await System.IO.File.WriteAllTextAsync(filePath, htmlContent);
+                        _logger.LogInformation($"Gantt chart saved to {filePath}");
+                        return fileName;
+                    }
+                    else
+                    {
+                        var error = await response.Content.ReadAsStringAsync();
+                        _logger.LogError($"Failed to fetch Gantt chart: {response.StatusCode} - {error}");
+                        throw new Exception($"API returned {response.StatusCode}: {error}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error in FetchAndSaveGanttChart: {ex.Message}");
+                throw;
+            }
+        }
+
         [HttpPost]
-        public IActionResult Schedule(bool Confirm)
+        public async Task<IActionResult> Schedule(bool Confirm)
         {
             if (!Confirm)
             {
@@ -123,46 +166,26 @@ namespace Web.Controllers
             }
 
             string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "files", "schedule.json");
-            string plotFilePath = Path.Combine(_env.WebRootPath, "plots", "plot.html");
 
             try
             {
                 if (System.IO.File.Exists(jsonFilePath))
                 {
-                    // Delete existing file first to avoid locking issues
-                    if (System.IO.File.Exists(plotFilePath))
+                    try
                     {
-                        try
-                        {
-                            System.IO.File.Delete(plotFilePath);
-                            _logger.LogInformation("Deleted existing plot file");
-                        }
-                        catch (Exception ex)
-                        {
-                            _logger.LogError($"Could not delete existing plot file: {ex.Message}");
-                        }
-                    }
+                        // Fetch and save initial schedule Gantt chart (version 0)
+                        var fileName = await FetchAndSaveGanttChart(0, "initial_schedule.html");
 
-                    RunPythonScript(); // Generate Plotly graph based on existing file
-
-                    // Short delay might help if there's a file system race condition
-                    System.Threading.Thread.Sleep(100);
-
-                    if (System.IO.File.Exists(plotFilePath))
-                    {
-                        _logger.LogInformation("Plot file exists, redirecting to DisplaySchedule");
+                        _logger.LogInformation($"Gantt chart saved as {fileName}, redirecting to DisplaySchedule");
                         Response.Headers.Add("Cache-Control", "no-cache, no-store, must-revalidate");
                         Response.Headers.Add("Pragma", "no-cache");
                         Response.Headers.Add("Expires", "0");
-                        _logger.LogInformation("About to redirect to DisplaySchedule");
-                        var result = RedirectToAction("DisplaySchedule");
-                        _logger.LogInformation($"Redirect result created: {result.GetType().Name}");
-                        return result;
+                        return RedirectToAction("DisplaySchedule", new { selectedFile = fileName });
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        _logger.LogError($"Plot file does not exist AFTER script run at path: {plotFilePath}");
-                        ViewBag.Message = "Plot file was not created or found after Python script execution.";
+                        _logger.LogError($"Failed to fetch Gantt chart: {ex.Message}");
+                        ViewBag.Message = $"Failed to fetch Gantt chart: {ex.Message}";
                         return View();
                     }
                 }
@@ -176,7 +199,6 @@ namespace Web.Controllers
             {
                 _logger.LogError(ex, "Exception occurred during Schedule POST action processing.");
                 ViewBag.Message = $"An error occurred: {ex.Message}";
-                // Explicitly return the View() here on error instead of letting middleware handle it
                 return View();
             }
         }
@@ -249,11 +271,31 @@ namespace Web.Controllers
         }
 
         // Display Schedule Graph
-        public IActionResult DisplaySchedule()
+        public IActionResult DisplaySchedule(string selectedFile = "plot.html")
         {
-            var relativePath = "/plots/plot.html";
-            var wwwrootPath = _env.WebRootPath; // Inject IWebHostEnvironment
-            var expectedFilePath = Path.Combine(wwwrootPath, relativePath.TrimStart('/'));
+            // Get all HTML files in the plots directory
+            var wwwrootPath = _env.WebRootPath;
+            var plotsDirectoryPath = Path.Combine(wwwrootPath, "plots");
+
+            // Create the plots directory if it doesn't exist
+            if (!Directory.Exists(plotsDirectoryPath))
+            {
+                Directory.CreateDirectory(plotsDirectoryPath);
+            }
+
+            // Get all HTML files in the plots directory
+            var htmlFiles = Directory.GetFiles(plotsDirectoryPath, "*.html")
+                                    .Select(Path.GetFileName)
+                                    .ToList();
+
+            // Set a default file if the list isn't empty and the selected file doesn't exist
+            if (htmlFiles.Any() && !htmlFiles.Contains(selectedFile))
+            {
+                selectedFile = htmlFiles.First();
+            }
+
+            var relativePath = $"/plots/{selectedFile}";
+            var expectedFilePath = Path.Combine(wwwrootPath, "plots", selectedFile);
 
             // Check if file exists and log the result
             bool fileExists = System.IO.File.Exists(expectedFilePath);
@@ -264,14 +306,15 @@ namespace Web.Controllers
             if (!fileExists)
             {
                 // Add a TempData message that will persist through the redirect
-                TempData["ErrorMessage"] = "The plot file was not found. Please try regenerating the schedule.";
-                // Optionally redirect back to the Schedule action
-                //return RedirectToAction("Schedule");
+                TempData["ErrorMessage"] = "The selected plot file was not found. Please try another file or regenerate the schedule.";
             }
 
             ViewBag.PlotPath = relativePath;
             ViewBag.AbsolutePlotPath = expectedFilePath;
             ViewBag.FileExists = fileExists;
+            ViewBag.HtmlFiles = htmlFiles;
+            ViewBag.SelectedFile = selectedFile;
+
             return View();
         }
 
@@ -349,6 +392,17 @@ namespace Web.Controllers
                 MaterialReadyDateTime = ready_datetime,
                 JobName = _context.Jobs.FirstOrDefault(j => j.JobNo == int.Parse(job))?.Name,
                 TaskDescription = _context.Tasks.FirstOrDefault(t => t.TaskSeq == int.Parse(task))?.Description,
+                // Get the operation data
+                OperationCode = _context.Tasks
+                    .Where(t => t.TaskSeq == int.Parse(task) && t.JobId == _context.Jobs.FirstOrDefault(j => j.JobNo == int.Parse(job)).Id)
+                    .Include(t => t.Operation)
+                    .Select(t => t.Operation != null ? t.Operation.OperationCode : null)
+                    .FirstOrDefault(),
+                OperationDescription = _context.Tasks
+                    .Where(t => t.TaskSeq == int.Parse(task) && t.JobId == _context.Jobs.FirstOrDefault(j => j.JobNo == int.Parse(job)).Id)
+                    .Include(t => t.Operation)
+                    .Select(t => t.Operation != null ? t.Operation.OperationDescription : null)
+                    .FirstOrDefault(),
                 Description = description
             });
 
@@ -624,8 +678,56 @@ namespace Web.Controllers
                     var responseContent = await response.Content.ReadAsStringAsync();
                     _logger.LogInformation($"API Response: {responseContent}");
 
-                    // Return the API response directly
-                    return Content(responseContent, "application/json");
+                    // Save API response JSON to wwwroot/files/schedule1.json
+                    var filesDir = Path.Combine(_env.WebRootPath, "files");
+                    if (!Directory.Exists(filesDir))
+                    {
+                        Directory.CreateDirectory(filesDir);
+                    }
+                    var scheduleJsonPath = Path.Combine(filesDir, "schedule1.json");
+                    await System.IO.File.WriteAllTextAsync(scheduleJsonPath, responseContent);
+
+                    // If successful, fetch and save the rescheduled Gantt chart
+                    if (response.IsSuccessStatusCode)
+                    {
+                        try
+                        {
+                            // Fetch and save rescheduled Gantt chart (version 1)
+                            await FetchAndSaveGanttChart(1, "reschedule.html");
+
+                            // Return success with redirect info
+                            return Json(new
+                            {
+                                success = true,
+                                message = "Rescheduling successful. Gantt chart generated.",
+                                redirectUrl = Url.Action("DisplaySchedule", new { selectedFile = "reschedule.html" })
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError($"Failed to fetch Gantt chart: {ex.Message}");
+                            return Json(new { success = false, message = $"Rescheduling succeeded but chart generation failed: {ex.Message}" });
+                        }
+                    }
+
+                    // Parse the API response for error messages
+                    try
+                    {
+                        var apiResponseObj = JsonSerializer.Deserialize<JsonElement>(responseContent);
+                        string errorMessage = "API request failed";
+
+                        if (apiResponseObj.TryGetProperty("detail", out JsonElement detail))
+                        {
+                            errorMessage = detail.GetString();
+                        }
+
+                        return Json(new { success = false, message = errorMessage });
+                    }
+                    catch
+                    {
+                        // If can't parse JSON, return the raw response
+                        return Json(new { success = false, message = $"API error: {responseContent}" });
+                    }
                 }
             }
             catch (Exception ex)
@@ -670,6 +772,22 @@ namespace Web.Controllers
             _logger.LogInformation($"CheckPlotReady called, file exists: {fileExists}");
             return Json(new { ready = fileExists });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> FetchInitialGanttChart()
+        {
+            try
+            {
+                // Fetch and save initial schedule Gantt chart (version 0)
+                var fileName = await FetchAndSaveGanttChart(0, "initial_schedule.html");
+                return Json(new { success = true, fileName = fileName });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to fetch Gantt chart: {ex.Message}");
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
     }
 
     // Add model classes for session storage
@@ -688,6 +806,8 @@ namespace Web.Controllers
         public string JobName { get; set; }
         public int TaskSeq { get; set; }
         public string TaskDescription { get; set; }
+        public string OperationCode { get; set; }
+        public string OperationDescription { get; set; }
         public DateTime MaterialReadyDateTime { get; set; }
         public string Description { get; set; }
     }

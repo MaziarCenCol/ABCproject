@@ -133,46 +133,42 @@
 		const statusDiv = document.getElementById('generatingStatus');
 		const errorDiv = document.getElementById('errorMessage');
 
-		// 1) Save JSON…
-		statusDiv.style.display = "block";
-		statusDiv.textContent = "⏳ Saving JSON data…";
-		let res = await fetch('/api/file/save_schedule_json', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(data)
-		});
-		if (!res.ok) throw new Error("Failed to save JSON");
+		try {
+			// 1) Save JSON data
+			statusDiv.style.display = "block";
+			statusDiv.textContent = "⏳ Saving JSON data…";
+			let res = await fetch('/api/file/save_schedule_json', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data)
+			});
 
-		// 2) Kick off the Python script
-		statusDiv.textContent = "⏳ Generating plot…";
-		res = await fetch('/Schedules/RunPlotScript', { method: 'POST' });
-		if (!res.ok) throw new Error("Failed to start plot script");
+			if (!res.ok) {
+				throw new Error("Failed to save JSON data");
+			}
 
-		// 3) Poll until the plot file appears
-		await waitForPlotReady();
+			// 2) Fetch the Gantt chart using the API
+			statusDiv.textContent = "⏳ Generating Gantt chart…";
+			res = await fetch('/Schedules/FetchInitialGanttChart', { method: 'POST' });
 
-		// 4) Redirect to your MVC action that will render the plot
-		window.location.href = '/Schedules/DisplaySchedule';
-	}
+			if (!res.ok) {
+				throw new Error("Failed to fetch Gantt chart");
+			}
 
-	function waitForPlotReady(timeout = 60000, interval = 1000) {
-		return new Promise((resolve, reject) => {
-			const start = Date.now();
+			const chartResult = await res.json();
 
-			const poll = async () => {
-				try {
-					const res = await fetch('/Schedules/CheckPlotReady');
-					const { ready } = await res.json();
-					if (ready) return resolve();
-					if (Date.now() - start > timeout) throw new Error("Timeout waiting for plot");
-					setTimeout(poll, interval);
-				} catch (err) {
-					reject(err);
-				}
-			};
+			if (!chartResult.success) {
+				throw new Error(chartResult.message || "Failed to create Gantt chart");
+			}
 
-			poll();
-		});
+			// 3) Redirect to the DisplaySchedule action with the file name
+			window.location.href = `/Schedules/DisplaySchedule?selectedFile=${chartResult.fileName}`;
+		} catch (error) {
+			console.error("Error:", error);
+			errorDiv.textContent = error.message;
+			errorDiv.style.display = "block";
+			statusDiv.style.display = "none";
+		}
 	}
 
 </script>
