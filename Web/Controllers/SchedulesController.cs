@@ -645,12 +645,13 @@ namespace Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateReschedule(DateTime rescheduleStartDate)
+        // public async Task<IActionResult> CreateReschedule(DateTime rescheduleStartDate)
+        public async Task<IActionResult> CreateReschedule([FromBody] RescheduleRequest request)
         {
             try
             {
                 // Format the datetime to ISO format
-                var formattedDateTime = rescheduleStartDate.ToString("yyyy-MM-ddTHH:mm:ssZ");
+                var formattedDateTime = request.RescheduleStartDate.ToString("yyyy-MM-ddTHH:mm:ssZ");
 
                 // Create the payload
                 var payload = new
@@ -811,4 +812,9 @@ namespace Web.Controllers
         public DateTime MaterialReadyDateTime { get; set; }
         public string Description { get; set; }
     }
+}
+
+public class RescheduleRequest
+{
+    public DateTime RescheduleStartDate { get; set; }
 }
