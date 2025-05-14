@@ -206,7 +206,20 @@
                                                         <td><input type="checkbox" class="material-delay-check" data-index="@i"
                                                                 checked /></td>
                                                         <td>@item.JobNo - @item.JobName</td>
-                                                        <td>@item.TaskSeq - @item.TaskDescription</td>
+                                                        <td>
+                                                            @{
+                                                                var taskDisplay = item.TaskSeq.ToString();
+                                                                if (!string.IsNullOrEmpty(item.OperationCode))
+                                                                {
+                                                                    taskDisplay += " - " + item.OperationCode;
+                                                                }
+                                                                if (!string.IsNullOrEmpty(item.OperationDescription))
+                                                                {
+                                                                    taskDisplay += " - " + item.OperationDescription;
+                                                                }
+                                                            }
+                                                            @taskDisplay
+                                                        </td>
                                                         <td>@item.MaterialReadyDateTime.ToString("yyyy-MM-dd HH:mm")</td>
                                                         <td>@item.Description</td>
                                                         <td>
@@ -363,24 +376,34 @@
                     })
                         .then(response => response.json())
                         .then(data => {
+                            console.log("Reschedule response:", data); // Log the response data
+
                             if (data.success === true) {
                                 resultDiv.className = 'mt-3 alert alert-success';
                                 resultDiv.textContent = 'Rescheduling request submitted successfully!';
+
+                                // Force redirect to display schedule with reschedule.html
+                                console.log("Redirecting to display schedule...");
+                                window.location.href = '/Schedules/DisplaySchedule?selectedFile=reschedule.html';
                             } else {
                                 resultDiv.className = 'mt-3 alert alert-danger';
                                 resultDiv.textContent = 'Rescheduling request failed. ' + (data.message || '');
+                                // Reset button state but don't clear form
+                                createRescheduleBtn.disabled = false;
+                                createRescheduleBtn.textContent = 'Submit Rescheduling';
+                                resultDiv.style.display = 'block';
                             }
-                            resultDiv.style.display = 'block';
                         })
                         .catch(error => {
                             resultDiv.className = 'mt-3 alert alert-danger';
                             resultDiv.textContent = 'Error: ' + error.message;
                             resultDiv.style.display = 'block';
-                        })
-                        .finally(() => {
-                            // Reset button state
+                            // Reset button state but don't clear form
                             createRescheduleBtn.disabled = false;
                             createRescheduleBtn.textContent = 'Submit Rescheduling';
+                        })
+                        .finally(() => {
+                            // We don't reset the button here as we're either redirecting or it's already reset in the error handlers
                         });
                 });
             }
@@ -409,13 +432,13 @@
             function loadJobs() {
                 // Get jobs from the model
                 var jobs = [];
-                            @foreach (var job in Model.Jobs)
+                                                    @foreach (var job in Model.Jobs)
                     {
                         <text>
                             jobs.push({
                                 jobNo: @job.JobNo,
                             name: "@Html.Raw(job.Name?.Replace("\"", "\\\""))"
-                                            });
+                                                                                            });
                         </text>
                 }
 
