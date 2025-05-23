@@ -3,6 +3,16 @@
     ViewData["Title"] = "Reschedule Request";
 }
 
+<!-- Hide checkboxes by default -->
+<style>
+    .machine-down-check,
+    .material-delay-check,
+    #selectAllMachineDowns,
+    #selectAllMaterialDelays {
+        display: none;
+    }
+</style>
+
 <div class="container d-flex justify-content-center align-items-start min-vh-100 pt-2">
     <div class="card p-4 shadow-lg custom-box" style="width: 90%;">
         <h4 class="text-center mb-4">Rescheduling</h4>
@@ -11,6 +21,10 @@
             <div class="alert alert-info text-center">
                 @ViewBag.Message
             </div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
         }
 
         <div class="container mt-4">
@@ -432,13 +446,13 @@
             function loadJobs() {
                 // Get jobs from the model
                 var jobs = [];
-                                                    @foreach (var job in Model.Jobs)
+                                                                @foreach (var job in Model.Jobs)
                     {
                         <text>
                             jobs.push({
                                 jobNo: @job.JobNo,
                             name: "@Html.Raw(job.Name?.Replace("\"", "\\\""))"
-                                                                                            });
+                                                                                                                    });
                         </text>
                 }
 

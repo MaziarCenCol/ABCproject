@@ -5,6 +5,8 @@
 
 # dotenv files
 .env
+appsettings.Development.json
+appsettings.Local.json
 
 # User-specific files
 *.rsuser
@@ -106,6 +108,11 @@ StyleCopReport.xml
 
 # Chutzpah Test files
 _Chutzpah*
+
+# Generated files
+apphost.exe
+*.cache
+
 
 # Visual C++ cache files
 ipch/
