@@ -6,6 +6,7 @@ using Web.Models;
 using System.Text;
 using Web.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Web.Controllers
 {
@@ -76,6 +77,18 @@ namespace Web.Controllers
         // ------------ Create Schedule ------------
         public IActionResult CreateSchedule()
         {
+            // Fetch projects from database and create SelectListItems
+            var projects = _context.Projects
+                .Where(p => p.ProjectCode.HasValue) // Only include projects with ProjectCode
+                .OrderBy(p => p.ProjectCode)
+                .Select(p => new SelectListItem
+                {
+                    Value = p.ProjectCode.ToString(),
+                    Text = p.ProjectCode.ToString()
+                })
+                .ToList();
+
+            ViewBag.ProjectList = projects;
             return View();
         }
 

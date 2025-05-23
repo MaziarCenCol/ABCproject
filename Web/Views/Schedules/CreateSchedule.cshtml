@@ -17,19 +17,8 @@
 		<form id="uploadForm" enctype="multipart/form-data">
 			<div class="mb-5">
 				@{
-					List<SelectListItem> projectList = new List<SelectListItem>
-								{
-								new SelectListItem { Text = "7682", Value = "7682" },
-								new SelectListItem { Text = "7684", Value = "7684" },
-								new SelectListItem { Text = "7686", Value = "7686" },
-								new SelectListItem { Text = "7783", Value = "7783" },
-								new SelectListItem { Text = "7867", Value = "7867" },
-								new SelectListItem { Text = "7888", Value = "7888" },
-								new SelectListItem { Text = "7889", Value = "7889" },
-								new SelectListItem { Text = "7916", Value = "7916" },
-								new SelectListItem { Text = "7920", Value = "7920" },
-								new SelectListItem { Text = "7940", Value = "7940" },
-								};
+					// Get project list from ViewBag (passed from controller)
+					List<SelectListItem> projectList = ViewBag.ProjectList ?? new List<SelectListItem>();
 				}
 				<!-- Dropdown for projects -->
 				<label for="projectSelect">Select Projects:</label>
