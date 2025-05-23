@@ -337,25 +337,52 @@ namespace Web.Controllers
         {
             MachineJobTask machineJobTask = GetMJT();
 
-            // Initialize session variables if they don't exist
-            if (HttpContext.Session.GetString("MachineDowns") == null)
-            {
-                HttpContext.Session.SetString("MachineDowns", JsonSerializer.Serialize(new List<MachineDown>()));
-            }
+            // Initialize session variables by retrieving data from database
+            // if (HttpContext.Session.GetString("MachineDowns") == null)
+            // {
+            // Retrieve machine downs from database
+            var dbMachineDowns = _context.MachineUnscheduledDownTimes
+                .Include(md => md.Machine)
+                .Select(md => new MachineDown
+                {
+                    MachineId = md.MachineId,
+                    MachineName = md.Machine.Name,
+                    DownStartDateTime = md.DownStartTime,
+                    DownEndDateTime = md.DownEndTime,
+                    Description = md.Description ?? ""
+                })
+                .ToList();
 
-            if (HttpContext.Session.GetString("MaterialDelays") == null)
-            {
-                HttpContext.Session.SetString("MaterialDelays", JsonSerializer.Serialize(new List<MaterialDelay>()));
-            }
+            HttpContext.Session.SetString("MachineDowns", JsonSerializer.Serialize(dbMachineDowns));
+            ///       }
+
+            // if (HttpContext.Session.GetString("MaterialDelays") == null)
+            // {
+            // Retrieve material delays from database using manual joins
+            var dbMaterialDelays = _context.Materials
+                .Where(m => m.FinishDate.HasValue) // Only include materials with finish dates (material delays)
+                .Join(_context.Tasks, m => m.TaskId, t => t.Id, (m, t) => new { Material = m, Task = t })
+                .Join(_context.Jobs, mt => mt.Task.JobId, j => j.Id, (mt, j) => new { mt.Material, mt.Task, Job = j })
+                .Join(_context.Operations, mtj => mtj.Task.OperationId, o => o.Id, (mtj, o) => new { mtj.Material, mtj.Task, mtj.Job, Operation = o })
+                .Select(result => new MaterialDelay
+                {
+                    JobNo = result.Job.JobNo,
+                    JobName = result.Job.Name,
+                    TaskSeq = result.Task.TaskSeq,
+                    TaskDescription = result.Task.Description,
+                    OperationCode = result.Operation.OperationCode,
+                    OperationDescription = result.Operation.OperationDescription,
+                    MaterialReadyDateTime = result.Material.FinishDate.Value,
+                    Description = result.Material.Description ?? ""
+                })
+                .ToList();
+
+            HttpContext.Session.SetString("MaterialDelays", JsonSerializer.Serialize(dbMaterialDelays));
+            // }
 
             // Pass the current collections to the view
             ViewBag.MachineDowns = JsonSerializer.Deserialize<List<MachineDown>>(HttpContext.Session.GetString("MachineDowns"));
             ViewBag.MaterialDelays = JsonSerializer.Deserialize<List<MaterialDelay>>(HttpContext.Session.GetString("MaterialDelays"));
-
-            // ViewBag.MachineDowns = JsonSerializer.Deserialize<List<MachineDown>>(
-            //     HttpContext.Session.GetString("MachineDowns") ?? JsonSerializer.Serialize(new List<MachineDown>()));
-            // ViewBag.MaterialDelays = JsonSerializer.Deserialize<List<MaterialDelay>>(
-            //     HttpContext.Session.GetString("MaterialDelays") ?? JsonSerializer.Serialize(new List<MaterialDelay>()));
 
             return View(machineJobTask);
         }
@@ -529,10 +556,16 @@ namespace Web.Controllers
                         if (response.IsSuccessStatusCode)
                         {
                             // Clear the session data after successful submission
-                            HttpContext.Session.SetString("MachineDowns", JsonSerializer.Serialize(new List<MachineDown>()));
-                            HttpContext.Session.SetString("MaterialDelays", JsonSerializer.Serialize(new List<MaterialDelay>()));
+                            // HttpContext.Session.SetString("MachineDowns", JsonSerializer.Serialize(new List<MachineDown>()));
+                            // HttpContext.Session.SetString("MaterialDelays", JsonSerializer.Serialize(new List<MaterialDelay>()));
 
-                            ViewBag.Message = "Rescheduling changes submitted successfully!";
+                            // ViewBag.Message = "Rescheduling changes submitted successfully!";
+
+                            // Use TempData to pass message across redirect
+                            TempData["SuccessMessage"] = "Rescheduling changes submitted successfully!";
+
+                            // Redirect to GET Reschedule() - which will refresh from database
+                            return RedirectToAction("Reschedule");
                         }
                         else
                         {
@@ -553,8 +586,14 @@ namespace Web.Controllers
             }
 
             MachineJobTask machineJobTask = GetMJT();
-            ViewBag.MachineDowns = new List<MachineDown>();
-            ViewBag.MaterialDelays = new List<MaterialDelay>();
+            // ViewBag.MachineDowns = new List<MachineDown>();
+            // ViewBag.MaterialDelays = new List<MaterialDelay>();
+
+            // On error, still need to populate ViewBag for immediate display
+            ViewBag.MachineDowns = JsonSerializer.Deserialize<List<MachineDown>>(
+                HttpContext.Session.GetString("MachineDowns") ?? "[]");
+            ViewBag.MaterialDelays = JsonSerializer.Deserialize<List<MaterialDelay>>(
+                HttpContext.Session.GetString("MaterialDelays") ?? "[]");
 
             return View("Reschedule", machineJobTask);
         }
